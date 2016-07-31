@@ -1,0 +1,12 @@
+.chat-message-container {
+  padding: 5px;
+  display: flex;
+  align-items: baseline; }
+  .chat-message-container.from-self {
+    justify-content: flex-end; }
+    .chat-message-container.from-self .user-avatar {
+      order: 1; }
+  .chat-message-container .user-avatar {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: top; }

@@ -1,0 +1,18 @@
+@import 'mixins';
+
+.nav-button {
+  float: left;
+}
+
+.nav-icon {
+  color: #fff !important;
+  opacity: 0.75;
+  &:hover {
+    opacity: 1;
+    @include transition(opacity, 200ms);
+  }
+}
+
+.nav-menu {
+  vertical-align: middle;
+}

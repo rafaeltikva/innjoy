@@ -1,0 +1,12 @@
+@import "variables";
+
+.header {
+  $height: 70px !default;
+
+  width: 100%;
+  height: $height;
+  background: {
+    color: $primary1-color;
+  }
+}
+

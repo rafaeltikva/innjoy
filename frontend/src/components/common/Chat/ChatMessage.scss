@@ -1,0 +1,43 @@
+@import 'variables';
+
+$chat-self: self;
+$chat-recipient: recipient;
+
+.chat-message {
+  background: $primary2-color;
+  max-width: 60%;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  font-weight: 300;
+  display: inline-block;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: '';
+    border-style: solid;
+  }
+
+  .chat-message-container.from-#{$chat-recipient} & {
+    background: $primary2-color;
+    color: $clr-white;
+    &:before {
+      border-width: 0 10px 10px 0;
+      border-color: transparent $primary2-color transparent transparent;
+      top: 0px;
+      left: -7px;
+    }
+  }
+
+  .chat-message-container.from-#{$chat-self} & {
+    background: $clr-white;
+    color: $primary2-color;
+    &:before {
+      border-width: 10px 10px 0 0;
+      border-color: $clr-white transparent transparent transparent;
+      top: 0px;
+      right: -7px;
+    }
+  }
+}

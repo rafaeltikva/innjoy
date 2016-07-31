@@ -1,0 +1,19 @@
+html, body {
+  height: 100vh;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-size: 16px !important;
+}
+
+#app, #app > div, .page {
+  height: 100%;
+}
+
+.menu-item {
+  cursor: pointer !important;
+}
+
+

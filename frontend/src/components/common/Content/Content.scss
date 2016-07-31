@@ -1,0 +1,9 @@
+#content {
+  $width: 80%;
+  $height: 100%;
+  width: $width;
+  height: $height;
+  padding: 0 24px;
+  display: inline-block;
+  text-align: center;
+}

@@ -1,0 +1,20 @@
+$chat-self: self;
+$chat-recipient: recipient;
+
+.chat-message-container {
+  padding: 5px;
+  display: flex;
+  align-items: baseline;
+  &.from-#{$chat-self} {
+    justify-content: flex-end;
+    & .user-avatar {
+      order: 1;
+    }
+  }
+
+  .user-avatar {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: top;
+  }
+}

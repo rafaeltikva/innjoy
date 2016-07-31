@@ -1,0 +1,6 @@
+.sidebar-item {
+  line-height: 0.05em !important;
+  & > div > div {
+    padding: 0 !important;
+  }
+}

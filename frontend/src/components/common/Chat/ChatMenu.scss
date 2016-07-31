@@ -1,0 +1,21 @@
+@import '../Button/Button';
+@import 'placeholders';
+
+.chat-menu {
+  .chat-button {
+    a {
+      @extend %btn;
+    }
+  }
+  .alert-badge {
+    @extend %badge-container;
+    & > span {
+      top: inherit !important;
+      right: inherit !important;
+      bottom: 7px;
+      left: 7px;
+    }
+  }
+}
+
+

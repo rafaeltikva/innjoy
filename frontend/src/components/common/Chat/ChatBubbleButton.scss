@@ -1,0 +1,14 @@
+@import "placeholders";
+
+.chat-bubble-button {
+  margin: {
+    top: 10px;
+  }
+}
+
+.alert-badge {
+  @extend %badge-container;
+  & > span {
+    right: 5px !important;
+  }
+}

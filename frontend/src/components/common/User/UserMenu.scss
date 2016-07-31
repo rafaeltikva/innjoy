@@ -1,0 +1,25 @@
+@import '../Button/Button';
+@import 'mixins';
+@import 'variables';
+
+.user-menu {
+  display: inline-block;
+  margin: {
+    top: -3px;
+  }
+
+  .user-button {
+    @extend %btn;
+  }
+
+  .user-text {
+    color: $clr-white;
+  }
+
+  .user-avatar {
+    @include border-radius(50%);
+    vertical-align: bottom;
+
+  }
+}
+

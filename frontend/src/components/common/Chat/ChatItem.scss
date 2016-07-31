@@ -1,0 +1,9 @@
+@import 'placeholders';
+@import 'variables';
+
+.chat-item {
+  @extend %custom-menu-item;
+  &.unread > div {
+    background-color: rgba($clr-grey-100, 0.5);
+  }
+}

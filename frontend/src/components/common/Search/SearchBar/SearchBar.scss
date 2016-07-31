@@ -1,0 +1,17 @@
+@import 'mixins';
+
+.search-bar {
+  @include border-radius(10px 0 0 10px);
+  @include box-sizing;
+  height: 100%;
+  width: 85%;
+  border: none;
+  outline: none;
+  font: {
+    size: 1.1em;
+  }
+  padding: {
+    left: 1em;
+  }
+
+}

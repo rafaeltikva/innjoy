@@ -1,0 +1,8 @@
+.sidebar-lists {
+  width: 100%;
+}
+
+.sidebar-list > div:first-child { // workaround for getting links to use full width of parent on sidebar
+  padding: 1em;
+  
+}

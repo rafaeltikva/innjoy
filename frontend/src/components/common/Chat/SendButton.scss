@@ -1,0 +1,16 @@
+@import "mixins";
+@import "variables";
+
+$buttonColor: $accent-color !default;
+
+.send-button {
+  width: 15%;
+  position: absolute !important;
+  right: 7px;
+  top: 7px;
+  @include border-radius(50px);
+  background-color: $buttonColor !important;
+  & svg {
+    fill: #fff !important;
+  }
+}

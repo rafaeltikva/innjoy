@@ -1,0 +1,11 @@
+.chat {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  margin: {
+    left: 20px;
+  }
+  &.expand {
+    width: 300px;
+  }
+}

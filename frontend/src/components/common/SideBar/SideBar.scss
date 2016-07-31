@@ -1,0 +1,22 @@
+@import "variables";
+
+.sidebar {
+  $width: 20%;
+  $background-opacity: 0.75;
+  $background-color: rgba($primary3-color, $background-opacity);
+  float: left;
+  background-color: $background-color;
+  width: $width;
+
+  .sidebar-links-header {
+    color: #fff !important;
+    font-weight: bold !important;
+    text-decoration: underline !important;
+  }
+
+}
+
+.sidebar-hotel iframe {
+  background: #fff;
+  height: 140px;
+}

@@ -1,0 +1,8 @@
+@import "placeholders";
+
+#inner-page {
+  @extend %parent-full-size;
+  position: relative;
+  padding: 24px;
+  z-index: 0;
+}

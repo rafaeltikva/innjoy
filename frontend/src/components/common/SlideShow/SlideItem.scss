@@ -1,0 +1,35 @@
+@import 'mixins';
+@import 'placeholders';
+
+@include keyframe_zoom;
+
+.slide-item {
+  @extend %parent-full-size;
+  position: absolute !important;
+  display: block !important;
+  opacity: 0;
+
+
+  &.active {
+    @include transition(opacity, 1.5s, ease-in-out);
+    @include animation(zoom, 25s, ease-in);
+    opacity: 1;
+  }
+
+  & div {
+    @extend %parent-full-size;
+  }
+
+  .slide-item-image {
+    background: {
+      size: cover;
+      position: 50% 50%;
+    }
+  }
+
+  .slide-item-cover {
+    background: rgba(#000, 0.5);
+    position: absolute;
+    top: 0;
+  }
+}

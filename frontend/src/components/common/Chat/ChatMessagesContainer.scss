@@ -1,0 +1,9 @@
+@import "variables";
+$bg-color: $clr-grey-100;
+
+.chat-messages-container {
+  background: $bg-color;
+  padding: 5px 0;
+  height: 282px;
+  overflow-y: scroll;
+}

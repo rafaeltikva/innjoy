@@ -1,0 +1,9 @@
+.sidebar-link {
+  color: #fff;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  padding: 16px;
+  display: block; }
+  .sidebar-link:hover, .sidebar-link.sidebar-link-active {
+    color: #fff;
+    background-color: #BAA58C; }

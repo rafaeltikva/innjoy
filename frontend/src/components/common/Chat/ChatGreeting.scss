@@ -1,0 +1,30 @@
+.chat-greeting-container {
+  position: relative;
+  background-color: rgba(#fff, 0.9);
+  margin: 0 15px 20px -245px;
+  padding: 1.2em;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    border: 15px transparent solid;
+    border-top-color: rgba(#fff, 0.9);
+  }
+
+  & .chat-greeting {
+    display: inline-block;
+    text-align: left;
+    font-size: 0.85em;
+
+  }
+  & .chat-name {
+    font-weight: bold;
+  }
+
+  & .close-button {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+  }
+}

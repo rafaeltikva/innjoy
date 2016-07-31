@@ -1,0 +1,13 @@
+@import 'placeholders';
+
+.notifications-menu {
+  .alert-badge {
+    @extend %badge-container;
+    & > span {
+      top: inherit !important;
+      right: inherit !important;
+      bottom: 7px;
+      left: 7px;
+    }
+  }
+}

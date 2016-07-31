@@ -1,0 +1,9 @@
+@import 'placeholders';
+@import 'variables';
+
+.notification-item {
+  @extend %custom-menu-item;
+  &.unread > div {
+    background-color: rgba($clr-grey-100, 0.5);
+  }
+}

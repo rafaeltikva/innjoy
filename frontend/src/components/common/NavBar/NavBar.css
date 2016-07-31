@@ -1,0 +1,7 @@
+.navbar {
+  height: 100%;
+  display: table !important;
+  padding: 0 24px; }
+
+.logo-container {
+  width: 25%; }

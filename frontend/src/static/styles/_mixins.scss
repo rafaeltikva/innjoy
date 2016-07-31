@@ -1,0 +1,80 @@
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-o-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation($keyframe, $duration: '', $timing_function: '', $delay: '', $iteration_count: '', $direction: '') {
+  -webkit-animation: #{$duration} #{$timing_function} #{$delay} #{$iteration_count} #{$direction} $keyframe;
+  -moz-animation: #{$duration} #{$timing_function} #{$delay} #{$iteration_count} #{$direction} $keyframe;
+  -o-animation: #{$duration} #{$timing_function} #{$delay} #{$iteration_count} #{$direction} $keyframe;
+  -ms-animation: #{$duration} #{$timing_function} #{$delay} #{$iteration_count} #{$direction} $keyframe;
+  animation: #{$duration} #{$timing_function} #{$delay} #{$iteration_count} #{$direction} $keyframe;
+}
+
+@mixin transform($transform_function) {
+  -webkit-transform: $transform_function;
+  -moz-transform: $transform_function;
+  -ms-transform: $transform_function;
+  -o-transform: $transform_function;
+  transform: $transform_function;
+}
+
+@mixin transition($property, $duration, $timing_function: '') {
+  -webkit-transition: $property $duration #{$timing_function} !important; // #{} removes the default empty string so that css parses correctly
+  -moz-transition: $property $duration #{$timing_function} !important;
+  -ms-transition: $property $duration #{$timing_function} !important;
+  -o-transition: $property $duration #{$timing_function} !important;
+  transition: $property $duration #{$timing_function} !important;
+}
+
+@mixin box-sizing($value: border-box) {
+  -webkit-box-sizing: $value;
+  -moz-box-sizing: $value;
+  box-sizing: $value;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+
+}
+
+@mixin keyframe_zoom() {
+  @include keyframes(zoom) {
+    0% {
+      @include transform(scale3d(1, 1, 1))
+    }
+
+    100% {
+      @include transform(scale3d(1.5, 1.5, 1.5))
+    }
+  }
+}
+
+@mixin keyframe_fadein() {
+  @include keyframes(fadein) {
+    0% {
+      margin: 100px;
+      opacity: 0;
+      @include transform(scale3d(.3, .3, .3))
+    }
+
+    100% {
+      opacity: 1;
+      @include transform(scale3d(1, 1, 1))
+    }
+  }
+}

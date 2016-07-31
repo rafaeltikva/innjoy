@@ -1,0 +1,5 @@
+.sidebar-lists {
+  width: 100%; }
+
+.sidebar-list > div:first-child {
+  padding: 1em; }
