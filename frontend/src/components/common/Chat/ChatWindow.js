@@ -16,8 +16,8 @@ class ChatWindow extends React.Component {
         console.log('rendering ChatWindow');
         return (
             <div className={"chat-window"} style={{display: this.props.showWindow ? "block" : "none"}}>
-                <ChatHeader username={this.props.username} onChatClose={this.props.onChatClose} onChatMinimize={this.props.onChatMinimize} />
-                <ChatMessagesContainer recipient={this.props.username} messages={this.props.messages} />
+                <ChatHeader user={this.props.user} onChatClose={this.props.onChatClose} onChatMinimize={this.props.onChatMinimize} />
+                <ChatMessagesContainer recipient={this.props.user.name} messages={this.props.messages} />
                 <ChatInput />
             </div>
         );

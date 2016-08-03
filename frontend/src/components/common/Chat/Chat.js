@@ -59,9 +59,9 @@ class Chat extends React.Component {
         console.log('rendering Chat');
         return (
             <div className={this.state.showWindow ? "chat expand" : "chat"}>
-                <ChatBubble username={user.name} numOfUnread={numOfUnread} showBubble={this.state.showBubble} showGreeting={this.state.showGreeting} onHideGreeting={this.hideGreeting}
+                <ChatBubble user={user} numOfUnread={numOfUnread} showBubble={this.state.showBubble} showGreeting={this.state.showGreeting} onHideGreeting={this.hideGreeting}
                             onToggleChatWindow={this.toggleChatWindow}/>
-                <ChatWindow username={user.name} messages={messages} showWindow={this.state.showWindow} onChatClose={this.closeChat} onChatMinimize={this.minimizeChat} />
+                <ChatWindow user={user} messages={messages} showWindow={this.state.showWindow} onChatClose={this.closeChat} onChatMinimize={this.minimizeChat} />
             </div>
         );
     }

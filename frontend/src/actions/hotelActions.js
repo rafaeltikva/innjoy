@@ -1,7 +1,7 @@
 import * as types from './actionTypes.js'
 import {HotelApi} from '../api/mockHotelApi'
 
-function getHotelInfoSuccess(hotelInfo) {
+function getMainResourceSuccess(hotelInfo) {
     return {
         type: types.GET_HOTEL_INFO_SUCCESS,
         hotelInfo,
@@ -10,7 +10,7 @@ function getHotelInfoSuccess(hotelInfo) {
 }
 
 
-function getHotelInfoError(error) {
+function getMainResourceError(error) {
     return {
         type: types.GET_HOTEL_INFO_ERROR,
         error,
@@ -29,10 +29,10 @@ export function getHotelInfo() {
     return function(dispatch) {
         console.log("dispatching FETCHING_HOTEL_INFO");
         dispatch(fetchingHotelInfo());
-        let api = new HotelApi();
-        api.getHotelInfo().then((hotelInfo) => {
+        let api = new HotelApi('hotelInfo');
+        api.getMainResource().then((hotelInfo) => {
             console.log("dispatching GET_HOTEL_INFO_SUCCESS with: ", hotelInfo);
-            dispatch(getHotelInfoSuccess(hotelInfo));
+            dispatch(getMainResourceSuccess(hotelInfo));
         });
     }
 }

@@ -7,7 +7,7 @@ require('./ChatHeader.scss');
 const ChatHeader = (props) => {
     return (
         <header className={"chat-header"}>
-            <span className={"chat-header-username chat-header-item"}>{props.username}</span>
+            <span className={"chat-header-username chat-header-item"}>{props.user.name + ' - '  + props.user.role}</span>
 
             <div className={"chat-header-buttons chat-header-item"}>
                 <MinimizeButton onTouchTap={props.onChatMinimize}/>

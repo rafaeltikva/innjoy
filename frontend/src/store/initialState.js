@@ -33,6 +33,26 @@ export default {
         error: '',
         data: []
     },
+    giftShopCategories: {
+        isFetching: false,
+        error: '',
+        data: []
+    },
+    currentGiftShopCategory: {
+        isFetching: false,
+        error: '',
+        data: []
+    },
+    currentGiftShopCategoryResources: {
+        isFetching: false,
+        error: '',
+        data: []
+    },
+    currentGiftShopResource: {
+        isFetching: false,
+        error: '',
+        data: {}
+    },
     chats: {
         isFetching: false,
         error: '',

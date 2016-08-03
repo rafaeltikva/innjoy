@@ -11,7 +11,7 @@ class ChatBubble extends React.Component {
         return (
             <div className={"chat-bubble"}>
                 <ChatGreeting showGreeting={this.props.showGreeting} onClose={this.props.onHideGreeting} />
-                <ChatBubbleButton tooltip={this.props.username} numOfUnread={this.props.numOfUnread} showButton={this.props.showBubble} onTouchTap={this.props.onToggleChatWindow} />
+                <ChatBubbleButton tooltip={this.props.user.name + ' - '  + this.props.user.role} numOfUnread={this.props.numOfUnread} showButton={this.props.showBubble} onTouchTap={this.props.onToggleChatWindow} />
             </div>
         );
     }

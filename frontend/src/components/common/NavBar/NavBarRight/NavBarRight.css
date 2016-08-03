@@ -4,11 +4,11 @@ Error: File to import not found or unreadable: mixins.
         on line 1 of NavBarRight.scss
 
 1: @import 'mixins';
-2: 
-3: .nav-button {
-4:   float: left;
-5: }
-6: 
+2: @import 'placeholders';
+3: 
+4: .navbar-right {
+5:   @extend %parent-full-size;
+6:   text-align: center;
 
 Backtrace:
 NavBarRight.scss:1
@@ -53,4 +53,4 @@ NavBarRight.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: mixins.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of NavBarRight.scss\A \A 1: @import 'mixins';\A 2: \A 3: .nav-button {\A 4:   float: left;\A 5: }\A 6: "; }
+  content: "Error: File to import not found or unreadable: mixins.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of NavBarRight.scss\A \A 1: @import 'mixins';\A 2: @import 'placeholders';\A 3: \A 4: .navbar-right {\A 5:   @extend %parent-full-size;\A 6:   text-align: center;"; }

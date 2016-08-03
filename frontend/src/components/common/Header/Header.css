@@ -6,9 +6,9 @@ Error: File to import not found or unreadable: variables.
 1: @import "variables";
 2: 
 3: .header {
-4:   $height: 70px !default;
-5: 
-6:   width: 100%;
+4:   width: 100%;
+5:   background: {
+6:     color: $primary1-color;
 
 Backtrace:
 Header.scss:1
@@ -53,4 +53,4 @@ Header.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: variables.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of Header.scss\A \A 1: @import \"variables\";\A 2: \A 3: .header {\A 4:   $height: 70px !default;\A 5: \A 6:   width: 100%;"; }
+  content: "Error: File to import not found or unreadable: variables.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of Header.scss\A \A 1: @import \"variables\";\A 2: \A 3: .header {\A 4:   width: 100%;\A 5:   background: {\A 6:     color: $primary1-color;"; }

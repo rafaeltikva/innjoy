@@ -2,8 +2,9 @@ import userInfo from './userInfo'
 import {greetUser} from '../helpers'
 
 const hotelInfo = {
+    id: 92,
+    title: "Hotel Name",
     data: {
-        id: 92,
         name: "David Intercontinental",
         address: "Moshe Dayan St. 55, Tel Aviv",
         logo: "",
@@ -43,13 +44,13 @@ const hotelInfo = {
                     },
                     {
                         title: "Front Desk",
-                        slug: "front_desk",
+                        slug: "front-desk",
                         description: "",
                         id: 3
                     },
                     {
                         title: "Room Service",
-                        slug: "room_service",
+                        slug: "room-service",
                         description: "",
                         id: 4
                     },
@@ -61,12 +62,18 @@ const hotelInfo = {
                         id: 5
                     },
                     {
+                        title: "Spa",
+                        slug: "amenities/spa",
+                        description: "",
+                        id: 15
+                    },
+                    {
                         slug: "transportation",
                         title: "Transportation",
                         description: "",
                         id: 6
                     }, {
-                        slug: "gift_shop",
+                        slug: "gift-shop",
                         title: "Gift Shop",
                         description: "",
                         id: 7

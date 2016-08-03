@@ -1,13 +1,20 @@
 html, body {
-  height: 100vh;
+  height: 100%;
   min-height: 100%; }
 
 body {
   margin: 0;
   font-size: 16px !important; }
 
-#app, #app > div, .page {
-  height: 100%; }
+#app {
+  height: 100%;
+  overflow: auto; }
+  #app > div {
+    height: 100%; }
+
+.page {
+  height: 100%;
+  position: relative; }
 
 .menu-item {
   cursor: pointer !important; }

@@ -6,7 +6,7 @@ import Content from '../../common/Content/Content'
 import SlideShow from '../../common/SlideShow/SlideShow'
 import InnerPage from '../../common/InnerPage/InnerPage'
 import Loading from '../../common/Loading'
-import ResourceCardsContainer from '../../common/Cards/ResourceCardsContainer'
+import GridResourceCards from '../../common/Cards/GridResourceCards'
 import * as amenitiesActions from '../../../actions/amenitiesActions'
 import {isResourceType, isRoot} from '../../../tools/helpers'
 
@@ -43,7 +43,7 @@ class Amenities extends React.Component {
             return isResourceType(params.amenity, amenities.data) && isRoot(params.amenity, amenities.data) ? amenityComponent : amenityCategoriesComponent;
         }
 
-        return <ResourceCardsContainer resources={amenities.data} currentPath={location.pathname}/>
+        return <GridResourceCards resources={amenities.data} currentPath={location.pathname}/>
 
     }
 

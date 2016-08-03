@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import SingleResourceCard from '../../common/Cards/SingleResourceCard'
+import PageResourceCard from '../../common/Cards/PageResourceCard'
 import Loading from '../../common/Loading'
 import NotFound from '../../common/NotFound'
 import * as amenitiesActions from '../../../actions/amenitiesActions'
@@ -43,7 +43,7 @@ class Amenity extends React.Component {
             return <NotFound>{this.props.currentAmenity.error}</NotFound>;
         }
 
-        return <SingleResourceCard resource={currentAmenity}/>;
+        return <PageResourceCard resource={currentAmenity}/>;
     }
 
     initializeCurrentAmenity() {

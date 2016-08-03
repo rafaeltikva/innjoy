@@ -1,18 +1,24 @@
 @import 'mixins';
+@import 'placeholders';
 
-.nav-button {
-  float: left;
-}
+.navbar-right {
+  @extend %parent-full-size;
+  text-align: center;
 
-.nav-icon {
-  color: #fff !important;
-  opacity: 0.75;
-  &:hover {
-    opacity: 1;
-    @include transition(opacity, 200ms);
+  .nav-button {
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    margin: 0 8px !important;
+    float: left;
   }
-}
 
-.nav-menu {
-  vertical-align: middle;
+  .nav-icon {
+    color: #fff !important;
+    opacity: 0.75;
+    &:hover {
+      opacity: 1;
+      @include transition(opacity, 200ms);
+    }
+  }
 }

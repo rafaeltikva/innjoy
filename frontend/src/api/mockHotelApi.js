@@ -1,45 +1,46 @@
-import amenities from './model/amenities'
-import hotelInfo from './model/hotelInfo'
-import userInfo from './model/userInfo'
-import chats from './model/chats'
-import notifications from './model/notifications'
-import {getResource, getResourceBySlug, getResourcesOfParent, getRootResources, getAllCategories, getCategoriesOfParent} from './helpers'
+import * as model from './model'
+import * as mockDBQueries from './mockDBQueries'
 
 export class HotelApi {
-    getAllAmenities() {
+
+    constructor(table) {
+        this.table = table;
+    }
+
+    getMainResource() {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve({data: amenities.data});
+                resolve(model[this.table]);
             }, 2000);
 
         });
     }
 
-    getAmenitiesOfParent(parentId, amenityType) {
+    getResourcesOfParent(parentId, resourceType) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                let foundAmenities = getResourcesOfParent(parentId, amenities.data, amenityType);
-                foundAmenities ? resolve({data: foundAmenities}) : reject('No amenities found');
+                let foundResources = mockDBQueries.getResourcesOfParent(parentId, model[this.table].data, resourceType);
+                foundResources ? resolve({data: foundResources}) : reject('No amenities found');
             }, 2000);
 
         });
     }
 
-    getRootAmenities(parentId, amenityType) {
+    getRootResources(parentId, resourceType) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                let foundAmenities = getRootResources(amenities.data);
-                foundAmenities ? resolve({data: foundAmenities}): reject('No amenities found');
+                let foundResources = mockDBQueries.getRootResources(model[this.table].data);
+                foundResources ? resolve({data: foundResources}) : reject('No amenities found');
             }, 2000);
 
         });
     }
 
-    getCurrentAmenity(resourceSlug, parentSlug) {
+    getCurrentResource(resourceSlug, parentSlug) {
         return new Promise((resolve, reject) => {
-            let amenity = getResourceBySlug(resourceSlug, amenities.data);
+            let resource = mockDBQueries.getResourceBySlug(resourceSlug, model[this.table].data);
             setTimeout(() => {
-                return amenity ? resolve(amenity) : reject(` ${resourceSlug} doesn't exist`);
+                return resource ? resolve(resource) : reject(` ${resourceSlug} doesn't exist`);
             }, 2000);
 
         });
@@ -47,7 +48,7 @@ export class HotelApi {
 
     getAllCategories() {
         return new Promise((resolve, reject) => {
-            let foundCategories = getAllCategories(amenities.data);
+            let foundCategories = mockDBQueries.getResourcesByType(model[this.table].data, 'category');
             setTimeout(() => {
                 return foundCategories.length > 0 ? resolve({data: foundCategories}) : reject('No categories found');
             }, 2000);
@@ -57,59 +58,13 @@ export class HotelApi {
 
     getCategoryById(categoryId) {
         return new Promise((resolve, reject) => {
-            let foundCategory = getResource(categoryId);
+            let foundCategory = mockDBQueries.getResourceById(categoryId, model[this.table].data);
             setTimeout(() => {
                 return foundCategory ? resolve(foundCategory) : reject('No category found');
             }, 2000);
         })
     }
 
-    getAmenityCategories(amenityId) {
-        return new Promise((resolve, reject) => {
-            let foundCategories = getCategoriesOfParent(amenityId, amenities.data);
-            setTimeout(() => {
-                return foundCategories.length > 0 ? resolve({ data: foundCategories}) : reject('No categories found');
-            }, 2000);
-
-        });
-    }
-
-    getHotelInfo() {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(Object.assign({}, hotelInfo));
-            }, 2000);
-        });
-    }
-
-    getNotifications() {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(Object.assign({}, notifications));
-            }, 2000)
-        });
-    }
-
-
 }
 
-export class UserApi {
 
-    getUserInfo() {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(Object.assign({}, userInfo));
-            }, 2000)
-        });
-    }
-
-    getChats() {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(Object.assign({}, chats));
-            }, 2000)
-        });
-    }
-
-
-}

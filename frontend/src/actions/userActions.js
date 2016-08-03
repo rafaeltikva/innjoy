@@ -1,5 +1,5 @@
 import * as types from './actionTypes'
-import {UserApi} from '../api/mockHotelApi'
+import {HotelApi} from '../api/mockHotelApi'
 
 function getUserInfoSuccess(userInfo) {
     return {
@@ -10,8 +10,8 @@ function getUserInfoSuccess(userInfo) {
 
 export function getUserInfo() {
     return function (dispatch) {
-        let api = new UserApi();
-        api.getUserInfo().then((userInfo) => {
+        let api = new HotelApi('userInfo');
+        api.getMainResource().then((userInfo) => {
             console.log('dispatching GET_USER_INFO_SUCCESS with: ', userInfo);
             dispatch(getUserInfoSuccess(userInfo));
         });

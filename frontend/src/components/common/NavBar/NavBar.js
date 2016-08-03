@@ -13,7 +13,7 @@ const NavBar = ({includeSearch, className, chats, notifications, chatsComponent}
     return (
         <AppBar titleStyle={{display: "none" }} className={"navbar"}>
             <NavBarLogoSection />
-            <NavBarSearchSection />
+            {includeSearch ? <NavBarSearchSection /> : null}
             <NavBarRightSection chatsComponent={chatsComponent} chats={chats} notifications={notifications} />
         </AppBar>
     );

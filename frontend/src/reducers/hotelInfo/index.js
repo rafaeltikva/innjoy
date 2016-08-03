@@ -1,0 +1,1 @@
+export hotelInfoReducer from './hotelInfoReducer'

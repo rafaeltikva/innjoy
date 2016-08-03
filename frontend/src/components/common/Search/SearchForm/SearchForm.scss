@@ -1,10 +1,14 @@
-.navbar .search-form {
-  height: 60%;
-  width: 100%;
+@import "placeholders";
+
+.search-form {
+  .navbar & {
+    @extend %parent-full-size;
+  }
+
+  .inner-page & {
+    width: 80%;
+    height: 48px;
+    margin: 0 auto;
+  }
 }
 
-.inner-page .search-form {
-  width: 80%;
-  height: 48px;
-  margin: 0 auto;
-}

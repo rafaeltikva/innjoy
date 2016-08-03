@@ -10,7 +10,7 @@ const Header = ({includeSearch, chats, notifications, chatsComponent}) => {
     console.log('rendering Header');
     return (
         <header className="header hotel-header">
-            <NavBar includeSearch={true} chatsComponent={chatsComponent} chats={chats} notifications={notifications} className={"hotel-navbar"}/>
+            <NavBar includeSearch={includeSearch} chatsComponent={chatsComponent} chats={chats} notifications={notifications} className={"hotel-navbar"}/>
         </header>
     );
 

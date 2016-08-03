@@ -40,22 +40,23 @@ class App extends React.Component {
     }
 
     render() {
+        let {location, route, chats, notifications, hotelInfo, children} = this.props;
         console.log('The App props: ', this.props);
         console.log('The current router location: ', this.props.location);
         console.log('Rendering App');
-        const includeSearchInNavBar = this.props.location.pathname !== '/';
+        const includeSearchInNavBar = location.pathname !== '/' && route.path !== '/index' ;
 
         // MuiThemeProvider is used to pass the muiTheme down to the child components using React's context
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
                     <Header includeSearch={includeSearchInNavBar} chatsComponent={this.state.chatsComponent}
-                            chats={this.props.chats} notifications={this.props.notifications}/>
+                            chats={chats} notifications={notifications}/>
                     <Main>
-                        {this.props.hotelInfo.isFetching ? <Loading />: this.props.children}
+                        {hotelInfo.isFetching ? <Loading />: children}
                     </Main>
                     <Footer>
-                        <Chats ref={(component) => this.state.chatsComponent = component} chats={this.props.chats}/>
+                        <Chats ref={(component) => this.state.chatsComponent = component} chats={chats}/>
                     </Footer>
 
                 </div>

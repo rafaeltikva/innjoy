@@ -3,11 +3,10 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Tab} from 'material-ui/Tabs'
 import TabBar from '../../common/TabBar/index'
-import ResourceCardsContainer from '../../common/Cards/ResourceCardsContainer'
 import Loading from '../../common/Loading'
-import * as categoriesActions from '../../../actions/categoriesActions'
+import GridResourceCards from '../../common/Cards/GridResourceCards'
 import * as amenitiesActions from '../../../actions/amenitiesActions'
-import {getAmenityFromStore, getAmenitiesOfParent, getCategoriesOfAmenity, getCategoryFromStore } from '../../../tools/amenityUtils'
+import {getAmenityFromStore, getCategoriesOfAmenity, getCategoryFromStore } from '../../../tools/amenityUtils'
 import {promiseReject} from '../../../tools/helpers'
 
 
@@ -46,9 +45,9 @@ class AmenityCategories extends React.Component {
         console.log('AmenityCategories received new props: ', nextProps);
         if (this.props.currentAmenity.id !== nextProps.currentAmenity.id) {
             console.log('getting amenity categories of: ', nextProps.currentAmenity);
-            this.props.actions.getAmenityCategories(nextProps.currentAmenity.id).then(categories => {
+            this.props.actions.getCategoriesOfAmenity(nextProps.currentAmenity.id).then(categories => {
                 console.log('got amenity categories: ', categories);
-                return this.props.actions.setCurrentCategory(categories.data[0], true);
+                return this.props.actions.setCurrentAmenityCategory(categories.data[0], true);
             });
         }
     }
@@ -70,7 +69,7 @@ class AmenityCategories extends React.Component {
                 {amenityCategories.data.map(category => {
                     return (
                         <Tab key={category.id} className={"amenity-category"} label={category.title}>
-                            <ResourceCardsContainer className={"amenity-categories-container"}
+                            <GridResourceCards className={"amenity-categories-container"}
                                                     resources={currentAmenityCategory.data}
                                                     currentPath={location.pathname}/>
                         </Tab>
@@ -122,7 +121,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(Object.assign({}, categoriesActions, amenitiesActions), dispatch)
+        actions: bindActionCreators(amenitiesActions, dispatch)
     };
 
 }

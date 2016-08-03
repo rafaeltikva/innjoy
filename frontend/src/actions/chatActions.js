@@ -6,7 +6,7 @@
  */
 
 import * as types from './actionTypes.js'
-import {UserApi} from '../api/mockHotelApi'
+import {HotelApi} from '../api/mockHotelApi'
 
 function fetchingChats() {
     return {
@@ -49,8 +49,8 @@ export function getChats() {
     return function(dispatch) {
         console.log("dispatching FETCHING_CHATS");
         dispatch(fetchingChats());
-        let api = new UserApi();
-        api.getChats().then((chats) => {
+        let api = new HotelApi('chats');
+        api.getMainResource().then((chats) => {
             console.log("dispatching GET_CHATS_SUCCESS with: ", chats);
             dispatch(getChatsSuccess(chats));
         });

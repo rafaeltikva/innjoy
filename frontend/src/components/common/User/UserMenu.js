@@ -10,7 +10,7 @@ require('./UserMenu.scss');
 const UserMenu = (props) => {
     return (
         <div className={"nav-menu user-menu"}>
-            <IconMenu anchorOrigin={{vertical: 'bottom', horizontal: 'left'}} iconButtonElement={<IconButton className={"user-button"} style={{padding: 0}}><UserAvatar size={30} /></IconButton>}>
+            <IconMenu anchorOrigin={{vertical: 'bottom', horizontal: 'left'}} iconButtonElement={<IconButton className={"nav-button user-button"}><UserAvatar size={32} /></IconButton>}>
                 <MenuItem value={"profile"}>Profile</MenuItem>
                 <MenuItem value={"payment_settings"}>Payment Settings</MenuItem>
                 <MenuItem value={"bookings"}>Bookings</MenuItem>

@@ -1,23 +1,25 @@
-import amenitiesReducer from './amenitiesReducer'
-import amenityReducer from './amenityReducer'
-import categoriesReducer from './categoriesReducer'
-import categoryReducer from './categoryReducer'
-import userInfoReducer from './userInfoReducer'
-import hotelInfoReducer from './hotelInfoReducer'
-import notificationsReducer from './notificationsReducer'
-import chatsReducer from './chatsReducer'
 import {combineReducers} from 'redux'
+import * as amenities from './amenities'
+import * as giftShop from './giftShop'
+import * as userInfo from './userInfo'
+import * as hotelInfo from './hotelInfo'
+import * as notifications from './notifications'
+import * as chats from './chats'
 
 const rootReducer = combineReducers({
-    hotelInfo: hotelInfoReducer,
-    userInfo: userInfoReducer,
-    amenities: amenitiesReducer,
-    currentAmenity: amenityReducer,
-    amenityCategories: categoriesReducer,
-    currentAmenityCategory: categoryReducer,
-    notifications: notificationsReducer,
-    chat: chatsReducer,
-    chats: chatsReducer
+    hotelInfo: hotelInfo.hotelInfoReducer,
+    userInfo: userInfo.userInfoReducer,
+    amenities: amenities.amenitiesReducer,
+    amenityCategories: amenities.amenityCategoriesReducer,
+    currentAmenity: amenities.amenityReducer,
+    giftShopCategories: giftShop.giftShopCategoriesReducer,
+    currentAmenityCategory: amenities.amenityCategoryReducer,
+    currentGiftShopCategoryResources: giftShop.giftShopCategoryResourcesReducer,
+    currentGiftShopResource: giftShop.giftShopResourceReducer,
+    currentGiftShopCategory: giftShop.giftShopCategoryReducer,
+    notifications: notifications.notificationsReducer,
+    chat: chats.chatsReducer,
+    chats: chats.chatsReducer
 
 });
 

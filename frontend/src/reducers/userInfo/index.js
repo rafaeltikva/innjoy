@@ -1,0 +1,1 @@
+export userInfoReducer from './userInfoReducer'

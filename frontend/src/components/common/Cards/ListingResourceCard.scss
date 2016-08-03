@@ -1,0 +1,73 @@
+@import 'placeholders';
+@import 'mixins';
+@import 'variables';
+
+.listing-resource-card {
+  position: relative;
+  height: 150px;
+  width: 100%;
+  margin: {
+    bottom: 24px;
+  }
+
+  & > div {
+    @extend %parent-full-size;
+    display: inline-flex;
+  }
+
+  & .listing-resource-media {
+    flex: 1;
+    height: 100%;
+    border-right: 1px solid $primary1-color;
+
+    & > div {
+      @extend %parent-full-size;
+    }
+    & .listing-resource-image {
+      max-height: 100% !important;
+      width: 100%;
+    }
+
+  }
+
+  & .listing-resource-copy {
+    flex: 2;
+    & .listing-resource-copy-item {
+       margin: 8px 0;
+    }
+    & .listing-resource-title {
+      padding: 0 !important;
+    }
+    & .listing-resource-price {
+      color: $clr-green-700;
+    }
+
+    & .listing-resource-sale {
+      color: $clr-red-700;
+      font-weight: bold;
+    }
+
+    & .listing-resource-incentive {
+      font-weight: bold;
+    }
+  }
+
+  & .listing-resource-social {
+    flex: 1;
+    text-align: center;
+    align-self: center;
+  }
+
+
+  &:hover {
+    .listing-resource-image {
+      @include transform(scale(1.05));
+      @include transition(all, 250ms, ease-in-out);
+
+    }
+    .listing-resource-media {
+      overflow: hidden;
+    }
+  }
+
+}

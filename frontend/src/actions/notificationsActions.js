@@ -2,7 +2,7 @@
 import * as types from './actionTypes.js'
 import {HotelApi} from '../api/mockHotelApi'
 
-function getNotificationsSuccess(notifications) {
+function getMainResourceSuccess(notifications) {
     return {
         type: types.GET_NOTIFICATIONS_SUCCESS,
         notifications,
@@ -11,7 +11,7 @@ function getNotificationsSuccess(notifications) {
 }
 
 
-function getNotificationsError(error) {
+function getMainResourceError(error) {
     return {
         type: types.GET_NOTIFICATIONS_ERROR,
         error,
@@ -30,10 +30,10 @@ export function getNotifications() {
     return function(dispatch) {
         console.log("dispatching FETCHING_NOTIFICATIONS");
         dispatch(fetchingNotifications());
-        let api = new HotelApi();
-        api.getNotifications().then((notifications) => {
+        let api = new HotelApi('notifications');
+        api.getMainResource().then((notifications) => {
             console.log("dispatching GET_NOTIFICATIONS_SUCCESS with: ", notifications);
-            dispatch(getNotificationsSuccess(notifications));
+            dispatch(getMainResourceSuccess(notifications));
         });
     }
 }

@@ -8,7 +8,7 @@ require('./NavBarRight.scss');
 const NavBarRight = ({chats, notifications, chatsComponent}) => {
     console.log('rendering NavBarRight', chats);
     return (
-        <nav>
+        <nav className={"navbar-right"}>
             <ChatMenu chatsComponent={chatsComponent} chats={chats} />
             <NotificationsMenu notifications={notifications} />
             <UserMenu />
