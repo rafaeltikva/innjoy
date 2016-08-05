@@ -6,13 +6,15 @@ export function getResourceBySlug(slug, resources) {
     return resources.find(resource => resource.slug === slug);
 }
 
-export function getResourceByType(resources, resourceType) {
-    return resources.find(resource => resource.type === resourceType);
+export function getResourcesByType(resourceType, resources) {
+    return resources.filter(resource => resource.type === resourceType);
 }
 
-
-export function getResourcesByType(resources, resourceType) {
-    return resources.filter(resource => resource.type === resourceType);
+export function getResourcesByTitle(resourceTitle, resources, resourceType) {
+    if (resourceType) {
+        return resources.filter(resource => resource.title.toLowerCase().match(resourceTitle.toLowerCase()) && resource.type === resourceType);
+    }
+    return resources.filter(resource => resource.title.toLowerCase().match(resourceTitle.toLowerCase().match(resourceTitle.toLowerCase())));
 }
 
 export function getResourcesOfParent(parentId, resources, resourceType) {

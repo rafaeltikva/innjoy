@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 import IconButton from 'material-ui/IconButton'
 import Badge from 'material-ui/Badge'
-import UserAvatar from '../User/UserAvatar/UserAvatar'
+import UserAvatar from '../User/UserAvatar'
 
 require('./ChatBubbleButton.scss');
 

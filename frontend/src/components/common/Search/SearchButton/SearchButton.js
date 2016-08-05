@@ -6,7 +6,7 @@ require('./SearchButton.scss');
 const SearchButton = ({className}) => {
     console.log('rendering SearchButton');
     return (
-        <IconButton iconClassName={"fa fa-search search-icon"} className={"search-button"} />
+        <IconButton type="submit" iconClassName={"fa fa-search search-icon"} className={"search-button"} />
     );
 };
 

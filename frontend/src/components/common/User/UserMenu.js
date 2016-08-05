@@ -3,7 +3,7 @@ import IconMenu from 'material-ui/IconMenu'
 import IconButton from 'material-ui/IconButton'
 import MenuItem from 'material-ui/MenuItem'
 import Divider from 'material-ui/Divider'
-import UserAvatar from './UserAvatar/UserAvatar'
+import UserAvatar from './UserAvatar'
 
 require('./UserMenu.scss');
 

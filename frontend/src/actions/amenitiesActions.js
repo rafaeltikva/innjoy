@@ -1,17 +1,17 @@
 import * as types from './actionTypes.js'
 import {HotelApi} from '../api/mockHotelApi'
+import * as reduxStore from './actionHelpers'
 
-
-function fetchingAmenity() {
+function fetchingAmenityResource() {
     return {
-        type: types.FETCHING_AMENITY
+        type: types.FETCHING_AMENITY_RESOURCE
     }
 
 }
 
-function fetchingAmenities() {
+function fetchingAmenityResources() {
     return {
-        type: types.FETCHING_AMENITIES
+        type: types.FETCHING_AMENITY_RESOURCES
     }
 
 }
@@ -30,62 +30,53 @@ function fetchingAmenityCategory() {
 
 }
 
-function getAmenitiesSuccess(amenities) {
+function getAmenityResourcesSuccess(amenities) {
     return {
-        type: types.GET_AMENITIES_SUCCESS,
+        type: types.GET_AMENITY_RESOURCES_SUCCESS,
         amenities
     }
 }
 
-
-function getAmenitiesFailed(error) {
+function getAmenityResourcesFailed(error) {
     return {
-        type: types.GET_AMENITIES_FAILED,
+        type: types.GET_AMENITY_RESOURCES_FAILED,
+        error
+    }
+}
+
+function getCurrentAmenityResourceSuccess(amenityResource) {
+    return {
+        type: types.GET_CURRENT_AMENITY_RESOURCE_SUCCESS,
+        amenityResource
+    }
+}
+
+function getCurrentAmenityResourceFailed(error) {
+    return {
+        type: types.GET_CURRENT_AMENITY_RESOURCE_FAILED,
         error
     }
 }
 
 
-
-function getCurrentAmenitySuccess(amenity) {
+function getAmenityCategorySuccess(amenityCategory) {
     return {
-        type: types.GET_CURRENT_AMENITY_SUCCESS,
-        amenity
+        type: types.GET_AMENITY_CATEGORY_SUCCESS,
+        amenityCategory
     }
 }
 
-function getCurrentAmenityFailed(error) {
+function getAmenityCategoryFailed(error) {
     return {
-        type: types.GET_CURRENT_AMENITY_FAILED,
+        type: types.GET_AMENITY_CATEGORY_FAILED,
         error
     }
 }
 
-function setCurrentAmenitySuccess(amenity) {
-    return {
-        type: types.SET_CURRENT_AMENITY_SUCCESS,
-        amenity
-    }
-}
-
-function initializeAmenity() {
-    return {
-        type: types.INITIALIZE_AMENITY
-    }
-
-}
-
-function getAmenityCategoriesSuccess(categories) {
+function getAmenityCategoriesSuccess(amenityCategories) {
     return {
         type: types.GET_AMENITY_CATEGORIES_SUCCESS,
-        categories
-    }
-}
-
-function setCurrentAmenityCategorySuccess(category) {
-    return {
-        type: types.SET_CURRENT_AMENITY_CATEGORY_SUCCESS,
-        category
+        amenityCategories
     }
 }
 
@@ -96,58 +87,126 @@ function getAmenityCategoriesFailed(error) {
     }
 }
 
-
-function initializeAmenityCategory() {
+function setCurrentAmenitySuccess(amenityResource) {
     return {
-        type: types.INITIALIZE_AMENITY_CATEGORY
+        type: types.SET_CURRENT_AMENITY_RESOURCE_SUCCESS,
+        amenityResource
+    }
+}
+
+function initializeCurrentAmenityResource() {
+    return {
+        type: types.INITIALIZE_CURRENT_AMENITY_RESOURCE
+    }
+
+}
+
+
+function setCurrentAmenityCategorySuccess(amenityCategory) {
+    return {
+        type: types.SET_CURRENT_AMENITY_CATEGORY_SUCCESS,
+        amenityCategory
+    }
+}
+
+function initializeCurrentAmenityCategory() {
+    return {
+        type: types.INITIALIZE_CURRENT_AMENITY_CATEGORY
     }
 
 }
 
 export function getMainResource() {
     return function (dispatch) {
-        console.log('dispatching FETCHING_AMENITIES');
-        dispatch(fetchingAmenities());
+        console.log('dispatching FETCHING_AMENITY_RESOURCES');
+        dispatch(fetchingAmenityResources());
         let api = new HotelApi('amenities');
         api.getMainResource().then((amenities) => {
-            console.log('dispatching GET_AMENITIES_SUCCESS');
-            dispatch(getAmenitiesSuccess(amenities));
+            console.log('dispatching GET_AMENITY_RESOURCES_SUCCESS');
+            dispatch(getAmenityResourcesSuccess(amenities));
         }, error => {
-            console.log('dispatching GET_AMENITIES_FAILED');
-            dispatch(getAmenitiesFailed(error));
+            console.log('dispatching GET_AMENITY_RESOURCES_FAILED');
+            dispatch(getAmenityResourcesFailed(error));
         });
     }
 }
 
-export function getRootAmenities() {
-    return function (dispatch) {
-        console.log('dispatching FETCHING_AMENITIES');
-        dispatch(fetchingAmenities());
+export function getRootAmenities(includeData) {
+    return function (dispatch, getState) {
+
+        let amenitiesFromStore = getState().amenities;
+
+        if (amenitiesFromStore.data.length > 0) {
+            console.log('found in store. dispatching GET_AMENITY_RESOURCES_SUCCESS');
+            dispatch(getAmenityResourcesSuccess(amenitiesFromStore));
+            return Promise.resolve(amenitiesFromStore); // returning the amenity category to be pass it to next promise chain
+        }
+
+        console.log('dispatching FETCHING_AMENITY_RESOURCES');
+        dispatch(fetchingAmenityResources());
         let api = new HotelApi('amenities');
-        api.getRootResources().then((amenities) => {
-            console.log('dispatching GET_AMENITIES_SUCCESS', amenities);
-            dispatch(getAmenitiesSuccess(amenities));
+        api.getRootResources(includeData).then((amenities) => {
+            console.log('dispatching GET_AMENITY_RESOURCES_SUCCESS', amenities);
+            dispatch(getAmenityResourcesSuccess(amenities));
         }, error => {
-            console.log('dispatching GET_AMENITIES_FAILED');
-            dispatch(getAmenitiesFailed(error));
+            console.log('dispatching GET_AMENITY_RESOURCES_FAILED');
+            dispatch(getAmenityResourcesFailed(error));
         });
     }
 }
 
-export function getCurrentAmenity(amenityName) {
-    return function (dispatch) {
-        console.log('dispatching FETCHING_AMENITY');
-        dispatch(fetchingAmenity());
+export function getAmenityCategoryBySlug(categorySlug, includeData) {
+    return function (dispatch, getState) {
+
+        let currentAmenityCategoriesFromStore = getState().amenityCategories.data;
+
+        let amenityCategoryFromStore = reduxStore.getResourceFromStoreBySlug(categorySlug, currentAmenityCategoriesFromStore);
+
+        if (amenityCategoryFromStore) {
+            console.log('found in store. dispatching GET_AMENITY_CATEGORY_SUCCESS');
+            dispatch(getAmenityCategorySuccess(category));
+            return Promise.resolve(amenityCategoryFromStore); // returning the amenity category to be pass it to next promise chain
+        }
+
+        console.log('dispatching FETCHING_AMENITY_CATEGORY');
+        dispatch(fetchingAmenityCategory());
+
         let api = new HotelApi('amenities');
-        return api.getCurrentResource(amenityName).then(amenity => {
-            console.log('dispatching GET_CURRENT_AMENITY_SUCCESS');
-            dispatch(getCurrentAmenitySuccess(amenity));
-            console.log('dispatching INITIALIZE_AMENITY');
-            dispatch(initializeAmenity());
-            return amenity; // returning the amenity to be pass it to next promise chain
+        return api.getResourceBySlug(categorySlug, includeData, 'category').then(category => {
+            console.log('dispatching GET_AMENITY_CATEGORY_SUCCESS');
+            dispatch(getAmenityCategorySuccess(category));
+            return category; // returning the amenity to be pass it to next promise chain
         }, error => {
-            console.log('dispatching GET_CURRENT_AMENITY_FAILED');
-            dispatch(getAmenitiesFailed(error));
+            console.log('dispatching GET_AMENITY_CATEGORY_FAILED');
+            dispatch(getAmenityCategoryFailed(error));
+        });
+
+    }
+}
+
+export function getAmenityResourceBySlug(amenitySlug, includeData) {
+    return function (dispatch, getState) {
+        let currentAmenitiesFromStore = getState().amenities;
+
+        let amenityResourceFromStore = reduxStore.getResourceFromStoreBySlug(amenitySlug, currentAmenitiesFromStore.data);
+
+        if (amenityResourceFromStore) {
+            console.log('found in store. dispatching GET_CURRENT_AMENITY_RESOURCE_SUCCESS');
+            dispatch(getCurrentAmenityResourceSuccess(amenityResourceFromStore));
+            return Promise.resolve(amenityResourceFromStore); // returning the amenity to be pass it to next promise chain
+        }
+
+        console.log('dispatching FETCHING_AMENITY_RESOURCE');
+        dispatch(fetchingAmenityResource());
+
+        let api = new HotelApi('amenities');
+        return api.getResourceBySlug(amenitySlug, includeData, 'resource').then(amenityResource => {
+            console.log('dispatching GET_CURRENT_AMENITY_RESOURCE_SUCCESS');
+            dispatch(getCurrentAmenityResourceSuccess(amenityResource));
+            return amenityResource; // returning the amenity to be pass it to next promise chain
+        }, error => {
+            console.log('dispatching GET_CURRENT_AMENITY_RESOURCE_FAILED');
+            dispatch(getCurrentAmenityResourceFailed(error));
         });
 
     }
@@ -168,53 +227,66 @@ export function getAllAmenityCategories() {
     }
 }
 
-export function getCategoriesOfAmenity(amenityId) {
-    return function (dispatch) {
+export function getAmenityResourcesOfParent(parentId, includeData) {
+    return function (dispatch, getState) {
+        console.log('dispatching FETCHING_AMENITY_RESOURCES');
+        dispatch(fetchingAmenityResources());
+        let api = new HotelApi('amenities');
+        return api.getResourcesOfParent(parentId, includeData, 'resource').then(amenityResources => {
+            console.log('dispatching GET_AMENITY_RESOURCES_SUCCESS');
+            dispatch(getAmenityResourcesSuccess(amenityResources));
+            return amenityResources;
+        }, error => {
+            console.log('dispatching GET_AMENITY_RESOURCES_FAILED');
+            dispatch(getAmenityResourcesFailed(error));
+        });
+    }
+}
+
+export function getAmenityCategoriesOfParent(parentId, includeData) {
+    return function (dispatch, getState) {
+        let currentAmenityCategoriesFromStore = getState().amenityCategories.data;
+        console.log('current amenity categories in store: ', currentAmenityCategoriesFromStore );
+
+        let foundCategoriesFromStore = reduxStore.getResourcesOfParent(parentId, currentAmenityCategoriesFromStore, 'category');
+
+        if (foundCategoriesFromStore.data.length > 0) {
+            console.log('found in store. dispatching GET_AMENITY_CATEGORIES_SUCCESS', foundCategoriesFromStore);
+            dispatch(getAmenityCategoriesSuccess(foundCategoriesFromStore));
+            return Promise.resolve(foundCategoriesFromStore);
+        }
+
         console.log('dispatching FETCHING_AMENITY_CATEGORIES');
         dispatch(fetchingAmenityCategories());
+
         let api = new HotelApi('amenities');
-        return api.getResourcesOfParent(amenityId).then(amenityCategories => {
-            console.log('dispatching GET_AMENITY_CATEGORIES_SUCCESS', amenityCategories);
+        return api.getResourcesOfParent(parentId, includeData, 'category').then(amenityCategories => {
+            console.log('dispatching GET_AMENITY_CATEGORIES_SUCCESS');
             dispatch(getAmenityCategoriesSuccess(amenityCategories));
             return amenityCategories;
         }, error => {
             console.log('dispatching GET_AMENITY_CATEGORIES_FAILED');
             dispatch(getAmenityCategoriesFailed(error));
-            return error;
         });
     }
 }
 
-export function setCurrentAmenity(amenity) {
+export function setCurrentAmenityResource(amenityResource) {
     return function (dispatch) {
-        console.log('dispatching SET_CURRENT_AMENITY_SUCCESS');
-        dispatch(setCurrentAmenitySuccess(amenity));
-        console.log('dispatching INITIALIZE_AMENITY');
-        dispatch(initializeAmenity());
-        return Promise.resolve(amenity);
+        console.log('dispatching SET_CURRENT_AMENITY_RESOURCE_SUCCESS');
+        dispatch(setCurrentAmenitySuccess(amenityResource));
+        console.log('dispatching INITIALIZE_CURRENT_AMENITY_RESOURCE');
+        dispatch(initializeCurrentAmenityResource());
+        return Promise.resolve(amenityResource);
     }
 }
 
-export function setCurrentAmenityCategory(category, includeData) {
+export function setCurrentAmenityCategory(category) {
     return function (dispatch) {
-        console.log('dispatching FETCHING_AMENITY_CATEGORY');
-        dispatch(fetchingAmenityCategory());
-        if (includeData) {
-            let api = new HotelApi('amenities');
-            return api.getResourcesOfParent(category.id).then(amenities => {
-                console.log('adding amenities data to category: ', amenities);
-                category.data = amenities.data;
-                console.log('dispatching SET_CURRENT_AMENITY_CATEGORY_SUCCESS with data', category);
-                dispatch(setCurrentAmenityCategorySuccess(category));
-                console.log('dispatching INITIALIZE_AMENITY_CATEGORY');
-                dispatch(initializeAmenityCategory());
-                return category;  // return category to allow accessing by chaining
-            });
-        }
         console.log('dispatching SET_CURRENT_AMENITY_CATEGORY_SUCCESS', category);
         dispatch(setCurrentAmenityCategorySuccess(category));
-        console.log('dispatching INITIALIZE_AMENITY_CATEGORY');
-        dispatch(initializeAmenityCategory());
+        console.log('dispatching INITIALIZE_CURRENT_AMENITY_CATEGORY');
+        dispatch(initializeCurrentAmenityCategory());
         return Promise.resolve(category);
     }
 }

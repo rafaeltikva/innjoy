@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react'
 import IconButton from 'material-ui/IconButton'
-import UserAvatar from '../User/UserAvatar/UserAvatar'
+import UserAvatar from '../User/UserAvatar'
 
 require('./SocialLikes.scss');
 

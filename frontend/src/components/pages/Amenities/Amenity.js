@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import PageResourceCard from '../../common/Cards/PageResourceCard'
 import Loading from '../../common/Loading'
-import NotFound from '../../common/NotFound'
+import NotFoundMessage from '../../common/NotFoundMessage'
 import * as amenitiesActions from '../../../actions/amenitiesActions'
 import {getAmenityFromStore} from '../../../tools/amenityUtils'
 
@@ -22,14 +22,22 @@ class Amenity extends React.Component {
     }
 
     componentWillMount() {
-        this.initializeCurrentAmenity();
+        let {params, actions, currentAmenity} = this.props;
+        let amenityResourceSlug = params.amenityResource ? params.amenityResource : params.amenity;
+        actions.getAmenityResourceBySlug(amenityResourceSlug).then(amenityResource => {
+            return actions.setCurrentAmenityResource(amenityResource);
+        });
+
     }
 
     render() {
         let {currentAmenity} = this.props;
-        console.log('rendering Amenity', currentAmenity);
-        console.log('this.props in amenity: ', this.props);
-        console.log('location in Amenity: ', this.props.location);
+        console.log('rendering Amenity', this.props);
+
+        if (currentAmenity.error) {
+            return <NotFoundMessage>{currentAmenity.error}</NotFoundMessage>
+        }
+
         return (
             currentAmenity.isFetching || this.state.isFirstRender ? <Loading /> : this.getCurrentAmenityContent()
         );
@@ -37,37 +45,14 @@ class Amenity extends React.Component {
 
 
     getCurrentAmenityContent() {
+        console.log('getting current amenity content: ', this.props);
         let { currentAmenity} = this.props;
 
         if (currentAmenity.error) {
-            return <NotFound>{this.props.currentAmenity.error}</NotFound>;
+            return <NotFoundMessage>{this.props.currentAmenity.error}</NotFoundMessage>;
         }
 
-        return <PageResourceCard resource={currentAmenity}/>;
-    }
-
-    initializeCurrentAmenity() {
-        let { currentAmenity, amenities, params, actions} = this.props;
-        console.log('Amenity will mount', this.props.currentAmenity);
-        let resourceSlug = params.amenityResource ? params.amenityResource : params.amenity;
-
-        if (!currentAmenity.id) {
-            console.log('Getting current amenity from server: ', resourceSlug);
-            return actions.getCurrentAmenity(resourceSlug);
-        }
-        if (resourceSlug !== currentAmenity.slug) {
-            console.log('looking for amenity in redux store...');
-            // find amenity in redux store. if not found, dispatch getCurrentAmenity to query amenity in server
-            let amenityFromStore = getAmenityFromStore(resourceSlug, amenities.data);
-
-            if (amenityFromStore) {
-                console.log('the amenity from redux store: ', amenityFromStore);
-                return actions.setCurrentAmenity(amenityFromStore);
-            }
-            // amenity not in store, fetch from server (if exists)
-            console.log('Amenity not in store...getting current amenity from server', resourceSlug);
-            actions.getCurrentAmenity(resourceSlug);
-        }
+        return <PageResourceCard callToAction={"Book Now"} resource={currentAmenity}/>;
     }
 }
 
@@ -78,7 +63,6 @@ Amenity.propTypes = {
 function mapStateToProps(state, ownProps) {
     let {amenities, currentAmenity} = state;
     return {
-        amenities,
         currentAmenity
     };
 }

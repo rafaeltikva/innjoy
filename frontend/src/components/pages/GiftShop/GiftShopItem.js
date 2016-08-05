@@ -1,6 +1,10 @@
 import React, {PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
+import Loading from '../../common/Loading'
+import NotFoundMessage from '../../common/NotFoundMessage'
+import PageResourceCard from '../../common/Cards/PageResourceCard'
+import * as giftShopActions from '../../../actions/giftShopActions'
 
 class GiftShopItem extends React.Component {
     constructor(props) {
@@ -17,52 +21,28 @@ class GiftShopItem extends React.Component {
     }
 
     componentWillMount() {
-        this.initializeCurrentAmenity();
+        let {actions, params} = this.props;
+        actions.getGiftShopResourceBySlug(params.item).then(giftShopItem => {
+            actions.setCurrentGiftShopResource(giftShopItem);
+        });
     }
 
     render() {
-        let {currentAmenity} = this.props;
-        console.log('rendering Amenity', currentAmenity);
-        console.log('this.props in amenity: ', this.props);
-        console.log('location in Amenity: ', this.props.location);
-        return (
-            currentAmenity.isFetching || this.state.isFirstRender ? <Loading /> : this.getCurrentAmenityContent()
-        );
-    }
 
+        let { currentGiftShopResource} = this.props;
 
-    getCurrentAmenityContent() {
-        let { currentAmenity} = this.props;
-
-        if (currentAmenity.error) {
-            return <NotFound>{this.props.currentAmenity.error}</NotFound>;
+        if (currentGiftShopResource.error) {
+            return <NotFoundMessage>{currentGiftShopResource.error}</NotFoundMessage>;
         }
 
-        return <PageResourceCard resource={currentAmenity}/>;
+        return (!currentGiftShopResource.isInit || this.state.isFirstRender) ? <Loading /> : this.getGiftShopItemContent();
     }
 
-    initializeCurrentAmenity() {
-        let { currentAmenity, amenities, params, actions} = this.props;
-        console.log('Amenity will mount', this.props.currentAmenity);
-
-        if (!currentAmenity.id) {
-            console.log('Getting current amenity from server: ', resourceSlug);
-            return actions.getCurrentAmenity(resourceSlug);
-        }
-        if (resourceSlug !== currentAmenity.slug) {
-            console.log('looking for amenity in redux store...');
-            // find amenity in redux store. if not found, dispatch getCurrentAmenity to query amenity in server
-            let amenityFromStore = getAmenityFromStore(resourceSlug, amenities.data);
-
-            if (amenityFromStore) {
-                console.log('the amenity from redux store: ', amenityFromStore);
-                return actions.setCurrentAmenity(amenityFromStore);
-            }
-            // amenity not in store, fetch from server (if exists)
-            console.log('Amenity not in store...getting current amenity from server', resourceSlug);
-            actions.getCurrentAmenity(resourceSlug);
-        }
+    getGiftShopItemContent() {
+        let { currentGiftShopResource} = this.props;
+        return <PageResourceCard callToAction={"Add to Cart"} resource={currentGiftShopResource} />;
     }
+
 }
 
 GiftShopItem.propTypes = {
@@ -70,14 +50,15 @@ GiftShopItem.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
+    let {currentGiftShopResource} = state;
     return {
-        state: state
+        currentGiftShopResource
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(actions, dispatch)
+        actions: bindActionCreators(giftShopActions, dispatch)
     };
 }
 

@@ -38,24 +38,21 @@ class AmenityCategories extends React.Component {
     }
 
     componentWillMount() {
-        this.initializeCurrentAmenity();
-    }
+        //this.initializeCurrentAmenity();
+        let {actions, params, currentAmenityCategory} = this.props;
 
-    componentWillReceiveProps(nextProps) {
-        console.log('AmenityCategories received new props: ', nextProps);
-        if (this.props.currentAmenity.id !== nextProps.currentAmenity.id) {
-            console.log('getting amenity categories of: ', nextProps.currentAmenity);
-            this.props.actions.getCategoriesOfAmenity(nextProps.currentAmenity.id).then(categories => {
-                console.log('got amenity categories: ', categories);
-                return this.props.actions.setCurrentAmenityCategory(categories.data[0], true);
-            });
-        }
+        actions.getAmenityCategoryBySlug(params.amenity).then(category => {
+            let includeResources = true;
+            return actions.getAmenityCategoriesOfParent(category.id, includeResources);
+        }).then(categories => {
+            actions.setCurrentAmenityCategory(categories.data[0]);
+        });
     }
 
     render() {
         console.log('rendering AmenityCategories', this.props);
-        let {amenities, currentAmenity, amenityCategories, currentAmenityCategory} = this.props;
-        let amenityContent = (currentAmenity.isFetching || amenityCategories.isFetching || currentAmenityCategory.isFetching || this.state.isFirstRender ) ?
+        let {amenityCategories, currentAmenityCategory} = this.props;
+        let amenityContent = (amenityCategories.isFetching || !currentAmenityCategory.isInit || this.state.isFirstRender ) ?
             <Loading /> : this.getCurrentCategoryAmenitiesContent();
         return amenityContent;
 
@@ -63,44 +60,20 @@ class AmenityCategories extends React.Component {
 
     getCurrentCategoryAmenitiesContent() {
         console.log('getting current category amenities content: ', this.props);
-        let { amenities, amenityCategories, currentAmenityCategory, location} = this.props;
+        let { amenityCategories, location} = this.props;
         return (
             <TabBar>
-                {amenityCategories.data.map(category => {
+                {amenityCategories.data.map(amenityCategory => {
                     return (
-                        <Tab key={category.id} className={"amenity-category"} label={category.title}>
+                        <Tab key={amenityCategory.id} className={"amenity-category"} label={amenityCategory.title}>
                             <GridResourceCards className={"amenity-categories-container"}
-                                                    resources={currentAmenityCategory.data}
-                                                    currentPath={location.pathname}/>
+                                               resources={amenityCategory.data}
+                                               currentPath={location.pathname}/>
                         </Tab>
                     );
                 })}
             </TabBar>
         );
-
-    }
-
-    initializeCurrentAmenity() {
-        let {amenities, category, currentAmenity, currentAmenityCategory, params, actions} = this.props;
-        console.log('AmenityCategories will mount with props:', this.props);
-
-        if (!currentAmenity.id) {
-            console.log('No current amenity. Getting current amenity from server: ', params.amenity);
-            return actions.getCurrentAmenity(params.amenity);
-        }
-        if (params.amenity !== currentAmenity.slug) {
-            console.log('looking for amenity in redux store...');
-            // find amenity in redux store. if not found, dispatch getCurrentAmenity to query amenity in server
-            let amenityFromStore = getAmenityFromStore(params.amenity, amenities.data);
-
-            if (amenityFromStore) {
-                console.log('the amenity from redux store: ', amenityFromStore);
-                return actions.setCurrentAmenity(amenityFromStore); // set current amenity from redux store, thereby saving a server request
-            }
-            // amenity not in store, fetch from server (if exists)
-                console.log('Amenity not in store...getting current amenity from server', params.amenity);
-                actions.getCurrentAmenity(params.amenity);
-        }
 
     }
 }
@@ -110,10 +83,8 @@ AmenityCategories.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-    let {amenities, currentAmenity, amenityCategories, currentAmenityCategory} = state;
+    let {amenityCategories, currentAmenityCategory} = state;
     return {
-        amenities,
-        currentAmenity,
         amenityCategories,
         currentAmenityCategory
     };

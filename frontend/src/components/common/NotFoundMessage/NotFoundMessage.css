@@ -1,17 +1,17 @@
 /*
 Error: File to import not found or unreadable: variables.
        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles
-        on line 1 of NotFound.scss
+        on line 1 of NotFoundMessage.scss
 
 1: @import "variables";
 2: 
-3: .not-found {
+3: .not-found-message {
 4:   color: $clr-white;
 5:   border: 1px solid $clr-white;
 6:   padding: 1em;
 
 Backtrace:
-NotFound.scss:1
+NotFoundMessage.scss:1
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/tree/import_node.rb:67:in `rescue in import'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/tree/import_node.rb:45:in `import'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.21/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -53,4 +53,4 @@ NotFound.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: variables.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of NotFound.scss\A \A 1: @import \"variables\";\A 2: \A 3: .not-found {\A 4:   color: $clr-white;\A 5:   border: 1px solid $clr-white;\A 6:   padding: 1em;"; }
+  content: "Error: File to import not found or unreadable: variables.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of NotFoundMessage.scss\A \A 1: @import \"variables\";\A 2: \A 3: .not-found-message {\A 4:   color: $clr-white;\A 5:   border: 1px solid $clr-white;\A 6:   padding: 1em;"; }

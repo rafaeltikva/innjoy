@@ -43,7 +43,7 @@ export default {
         error: '',
         data: []
     },
-    currentGiftShopCategoryResources: {
+    giftShopResources: {
         isFetching: false,
         error: '',
         data: []
@@ -71,5 +71,9 @@ export default {
             showBubble: true
         },
         messages: []
+    },
+    search: {
+        isSearching: false,
+        error: ''
     }
 };

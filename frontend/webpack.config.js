@@ -14,7 +14,7 @@ module.exports = {
     context: __dirname + '/src',
     entry: {
         app: './main',
-        lib: ['lodash', 'jquery']
+        lib: ['react', 'lodash', 'jquery']
     },
     output: {
         path: path.resolve(__dirname, './build'),
@@ -72,11 +72,8 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'lib'
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'commons',
-            filename: 'bundle.commons.js',
-            chunks: ['app']
+            // filename: 'bundle.commons.js', // give the chunk a different name
+            //chunks: ['lib']
         }),
         /*removeEmpty([
          ifProd(new webpack.optimize.DedupePlugin()) // remove duplicate dependencies/code
@@ -93,7 +90,7 @@ module.exports = {
         contentBase: './src/templates',
         port: 7001,
         inline: true,
-        hot: true,
+        // hot: true, // not needed when using HotModuleReplacementPlugin.
         historyApiFallback: true
     }
 };

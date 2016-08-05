@@ -12,7 +12,6 @@
     }
     & .page-resource-card-image {
       @extend %parent-full-size;
-      @extend %background-cover-center;
     }
 
     & .page-resource-title {

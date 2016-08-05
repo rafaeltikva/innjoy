@@ -31,24 +31,8 @@ class Amenities extends React.Component {
         actions.getRootAmenities();
     }
 
-    getAmenitiesContent() {
-        let {params, amenities, location, amenityComponent, amenityCategoriesComponent} = this.props;
-        console.log('this.props in Amenities: ', this.props);
-
-        if (params.amenityResource) {
-            console.log('returning Amenity', amenityComponent);
-            return amenityComponent;
-        }
-        if (params.amenity) {
-            return isResourceType(params.amenity, amenities.data) && isRoot(params.amenity, amenities.data) ? amenityComponent : amenityCategoriesComponent;
-        }
-
-        return <GridResourceCards resources={amenities.data} currentPath={location.pathname}/>
-
-    }
-
     render() {
-        let {children, amenities, hotelInfo} = this.props;
+        let {amenities, hotelInfo} = this.props;
         let amenitiesContent = amenities.isFetching || this.state.isFirstRender ? <Loading /> : this.getAmenitiesContent();
 
         console.log('rendering amenities page: ', amenities);
@@ -63,6 +47,21 @@ class Amenities extends React.Component {
                 </InnerPage>
             </div>
         );
+    }
+
+    getAmenitiesContent() {
+        let {params, amenities, location, amenityComponent, amenityCategoriesComponent} = this.props;
+        console.log('this.props in Amenities: ', this.props);
+
+        if (params.amenityResource) {
+            return amenityComponent;
+        }
+        if (params.amenity) {
+            return isResourceType(params.amenity, amenities.data) && isRoot(params.amenity, amenities.data) ? amenityComponent : amenityCategoriesComponent;
+        }
+
+        return <GridResourceCards resources={amenities.data} currentPath={location.pathname}/>
+
     }
 }
 

@@ -6,6 +6,7 @@
     "node": ">=5.0 <6",
     "npm": ">=3.3 <4"
   },
+
   "directories": {
     "doc": "docs"
   },

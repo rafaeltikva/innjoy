@@ -1,4 +1,6 @@
 export Home from './Home'
+export NotFound from './NotFound'
+export SearchResults from './SearchResults'
 export Amenities from './Amenities'
 export Amenity from './Amenities/Amenity'
 export AmenityCategories from './Amenities/AmenityCategories'

@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux'
 import {Tab} from 'material-ui/Tabs'
 import TabBar from '../../common/TabBar'
 import Loading from '../../common/Loading'
-import NotFound from '../../common/NotFound'
+import NotFoundMessage from '../../common/NotFoundMessage'
 import SideBar from '../../common/SideBar/SideBar'
 import Content from '../../common/Content/Content'
 import SlideShow from '../../common/SlideShow/SlideShow'
@@ -16,8 +16,7 @@ class GiftShop extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isFirstRender: true,
-            counter: 0
+            isFirstRender: true
         }
     }
 
@@ -28,28 +27,18 @@ class GiftShop extends React.Component {
     }
 
     componentWillMount() {
-        let {actions, currentGiftShopCategory, giftShopCategories} = this.props;
-        if (!currentGiftShopCategory.id) {
-            actions.getAllGiftShopCategories().then(categories => {
-                console.log('setting current category', categories.data[0]);
-                actions.setCurrentGiftShopCategory(categories.data[0], true)
-            });
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        /*
-        console.log('GiftShop receiving new props: ', nextProps);
-        if (nextProps.giftShopCategories.data.length > this.props.giftShopCategories.data.length && !nextProps.currentGiftShopCategory.id) {
-            //this.props.actions.setCurrentGiftShopCategory(nextProps.giftShopCategories.data[0], true);
-        }
-        */
+        let {actions} = this.props;
+        let includeResources = true;
+        actions.getAllGiftShopCategories(includeResources).then(categories => {
+            console.log('setting current category', categories.data[0]);
+            actions.setCurrentGiftShopCategory(categories.data[0])
+        });
     }
 
     render() {
         console.log('rendering GiftShop: ', this.props);
-        let {hotelInfo, giftShopCategories, currentGiftShopCategory, currentGiftShopCategoryResources} = this.props;
-        let currentCategoryContent = (giftShopCategories.isFetching || currentGiftShopCategoryResources.isFetching || currentGiftShopCategory.isFetching || this.state.isFirstRender) ?
+        let {hotelInfo, giftShopCategories} = this.props;
+        let currentCategoryContent = (giftShopCategories.isFetching || this.state.isFirstRender) ?
             <Loading /> : this.getCurrentCategoryContent();
         return (
             <div id="gift-shop-page" className={"page"}>
@@ -67,10 +56,14 @@ class GiftShop extends React.Component {
 
     getCurrentCategoryContent() {
         console.log('getting current gift shop category content: ', this.props);
-        let {location, giftShopCategories, currentGiftShopCategory, currentGiftShopCategoryResources} = this.props;
+        let {params, children, location, giftShopCategories} = this.props;
 
-        if (currentGiftShopCategory.error) {
-            return <NotFound>{currentGiftShopCategory.error}</NotFound>
+        if (giftShopCategories.error) {
+            return <NotFoundMessage>{giftShopCategories.error}</NotFoundMessage>
+        }
+
+        if (params.item) {
+            return children; // return child component - item page
         }
 
         return (
@@ -79,7 +72,7 @@ class GiftShop extends React.Component {
                     return (
                         <Tab key={category.id} className={"amenity-category"} label={category.title}>
                             <ListingResourceCards className={"amenity-categories-container"}
-                                                  resources={currentGiftShopCategory.data}
+                                                  resources={category.data}
                                                   currentPath={location.pathname}/>
                         </Tab>
                     );
@@ -95,12 +88,10 @@ GiftShop.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-    let {hotelInfo, giftShopCategories, currentGiftShopCategory, currentGiftShopCategoryResources} = state;
+    let {hotelInfo, giftShopCategories} = state;
     return {
         hotelInfo,
-        giftShopCategories,
-        currentGiftShopCategory,
-        currentGiftShopCategoryResources
+        giftShopCategories
     };
 }
 

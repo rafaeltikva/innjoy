@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react'
-import UserAvatar from '../User/UserAvatar/UserAvatar'
+import UserAvatar from '../User/UserAvatar'
 import ChatMessage from './ChatMessage'
 
 require('./ChatMessageContainer.scss');

@@ -26,24 +26,23 @@ const muiTheme = getMuiTheme({
 
 class App extends React.Component {
     constructor(props, context) {
-        console.log('App constructor');
         super(props);
         this.state = {
-            chatsComponent: undefined
+            chatsComponent: undefined,
+            isFirstRender: true
         }
 
     }
 
+
     componentDidMount() {
         console.log('setting chatsComponent', this.state.chatsComponent);
-        this.setState({chatsComponent: this.state.chatsComponent}); // updating chatsComponent to pass forward to ChatMenu via Header
+        this.setState({chatsComponent: this.state.chatsComponent, isFirstRender: false}); // updating chatsComponent to pass forward to ChatMenu via Header
     }
 
     render() {
         let {location, route, chats, notifications, hotelInfo, children} = this.props;
-        console.log('The App props: ', this.props);
-        console.log('The current router location: ', this.props.location);
-        console.log('Rendering App');
+        console.log('Rendering App', this.props);
         const includeSearchInNavBar = location.pathname !== '/' && route.path !== '/index' ;
 
         // MuiThemeProvider is used to pass the muiTheme down to the child components using React's context
@@ -53,7 +52,7 @@ class App extends React.Component {
                     <Header includeSearch={includeSearchInNavBar} chatsComponent={this.state.chatsComponent}
                             chats={chats} notifications={notifications}/>
                     <Main>
-                        {hotelInfo.isFetching ? <Loading />: children}
+                        {hotelInfo.isFetching || this.state.isFirstRender ? <Loading />: children}
                     </Main>
                     <Footer>
                         <Chats ref={(component) => this.state.chatsComponent = component} chats={chats}/>
@@ -66,7 +65,6 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-    console.log('mapping state to App props:', state);
     return {
         userInfo: state.userInfo,
         hotelInfo: state.hotelInfo,
@@ -81,5 +79,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-console.log('Exporting default App');
 export default connect(mapStateToProps)(App);

@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react'
 import MenuItem from 'material-ui/MenuItem'
-import UserAvatar from '../User/UserAvatar/UserAvatar'
+import UserAvatar from '../User/UserAvatar'
 import Divider from 'material-ui/Divider'
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
 

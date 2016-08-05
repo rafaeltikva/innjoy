@@ -5,13 +5,13 @@ require('./ListingResourceCards.scss');
 
 const ListingResourceCards = ({resources, currentPath, className}) => {
     className = className || '';
-    console.log("currentPath: ", currentPath);
 
     console.log('rendering ListingResourceCards', resources);
+
     return (
         <div className={`listing-resource-cards ${className}`}>
-            {resources.map((resource, index) => <ListingResourceCard key={resource.id}
-                                                                  url={`${currentPath}/${resource.slug}`} {...resource} />)}
+            {resources.map((resource, index) => <ListingResourceCard key={resource.id} resource={resource}
+                                                                  url={`${currentPath}/${resource.slug}`} />)}
         </div>
     );
 };

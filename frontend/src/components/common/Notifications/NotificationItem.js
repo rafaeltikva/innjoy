@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 import MenuItem from 'material-ui/MenuItem'
 import Divider from 'material-ui/Divider'
-import UserAvatar from '../User/UserAvatar/UserAvatar'
+import UserAvatar from '../User/UserAvatar'
 
 require('./NotificationItem.scss');
 
