@@ -7,8 +7,8 @@ Error: File to import not found or unreadable: mixins.
 2: 
 3: @include keyframe_fadein;
 4: 
-5: .greeting {
-6:   @include animation(fadein, $duration: 3s, $timing-function: ease-in-out);
+5: .greeting-container {
+6:   text-align: center;
 
 Backtrace:
 Greeting.scss:1
@@ -53,4 +53,4 @@ Greeting.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: mixins.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of Greeting.scss\A \A 1: @import 'mixins';\A 2: \A 3: @include keyframe_fadein;\A 4: \A 5: .greeting {\A 6:   @include animation(fadein, $duration: 3s, $timing-function: ease-in-out);"; }
+  content: "Error: File to import not found or unreadable: mixins.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of Greeting.scss\A \A 1: @import 'mixins';\A 2: \A 3: @include keyframe_fadein;\A 4: \A 5: .greeting-container {\A 6:   text-align: center;"; }

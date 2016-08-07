@@ -7,8 +7,7 @@ body {
   font-size: 16px !important; }
 
 #app {
-  height: 100%;
-  overflow: auto; }
+  height: 100%; }
   #app > div {
     height: 100%; }
 
@@ -18,3 +17,6 @@ body {
 
 .menu-item {
   cursor: pointer !important; }
+
+.content-container {
+  padding: 8px; }

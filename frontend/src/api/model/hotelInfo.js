@@ -35,6 +35,7 @@ const hotelInfo = {
         services: {
             hotel: {
                 title: "Hotel Services",
+                slug: "hotel-services",
                 data: [
                     {
                         title: "Concierge",
@@ -82,33 +83,34 @@ const hotelInfo = {
             },
             nearby: {
                 title: "Nearby",
+                slug: "nearby",
                 data: [
                     {
-                        slug: "coffee",
+                        slug: "nearby/coffee",
                         title: "Coffee",
                         description: "",
                         id: 8
                     },
                     {
-                        slug: "restaurants",
+                        slug: "nearby/restaurants",
                         title: "Restaurants",
                         description: "",
                         id: 9
                     },
                     {
-                        slug: "shopping",
+                        slug: "nearby/shopping",
                         title: "Shopping",
                         description: "",
                         id: 10
                     },
                     {
-                        slug: "fun",
+                        slug: "nearby/fun",
                         title: "Fun",
                         description: "",
                         id: 11
                     },
                     {
-                        slug: "events",
+                        slug: "nearby/events",
                         title: "Events",
                         description: "",
                         id: 12

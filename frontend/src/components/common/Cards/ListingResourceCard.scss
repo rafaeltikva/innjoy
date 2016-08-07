@@ -18,7 +18,7 @@
   & .listing-resource-media {
     flex: 1;
     height: 100%;
-    border-right: 1px solid $primary1-color;
+    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px;
 
     & > div {
       @extend %parent-full-size;
@@ -32,8 +32,9 @@
 
   & .listing-resource-copy {
     flex: 2;
+    text-align: left;
     & .listing-resource-copy-item {
-       margin: 8px 0;
+      margin: 8px 0;
     }
     & .listing-resource-title {
       padding: 0 !important;
@@ -57,7 +58,6 @@
     text-align: center;
     align-self: center;
   }
-
 
   &:hover {
     .listing-resource-image {

@@ -1,16 +1,16 @@
 @import "placeholders";
 @import "variables";
 
-.page-resource-card {
+.page-resource {
   text-align: left;
 
-  & .page-resource-card-media {
+  & .page-resource-media {
     height: 400px;
 
     & > div {
       @extend %parent-full-size;
     }
-    & .page-resource-card-image {
+    & .page-resource-image {
       @extend %parent-full-size;
     }
 
@@ -18,20 +18,20 @@
       height: auto;
     }
   }
-  & .page-resource-card-description {
+  & .page-resource-copy {
     display: inline-block;
     width: 75%;
     float: left;
     border-right: 1px solid rgba($clr-black, 0.1);;
   }
 
-  & .page-resource-card-action {
+  & .page-resource-action {
     display: inline-block;
     width: 25%;
     text-align: center;
   }
 
-  & .page-resource-card-button {
+  & .page-resource-button {
     background-color: $accent-color !important;
     color: $clr-white !important;
 

@@ -6,7 +6,7 @@ Error: File to import not found or unreadable: placeholders.
 1: @import "placeholders";
 2: @import "variables";
 3: 
-4: .page-resource-card {
+4: .page-resource {
 5:   text-align: left;
 6: 
 
@@ -53,4 +53,4 @@ PageResourceCard.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: placeholders.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of PageResourceCard.scss\A \A 1: @import \"placeholders\";\A 2: @import \"variables\";\A 3: \A 4: .page-resource-card {\A 5:   text-align: left;\A 6: "; }
+  content: "Error: File to import not found or unreadable: placeholders.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of PageResourceCard.scss\A \A 1: @import \"placeholders\";\A 2: @import \"variables\";\A 3: \A 4: .page-resource {\A 5:   text-align: left;\A 6: "; }

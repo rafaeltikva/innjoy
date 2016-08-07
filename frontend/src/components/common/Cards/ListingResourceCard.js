@@ -23,6 +23,7 @@ class ListingResourceCard extends React.Component {
                         <CardTitle className={"listing-resource-title"} title={resource.title}/>
                     </Link>
 
+                    <div className={"listing-resource-copy-item listing-resource-address"}>{resource.address}</div>
                     <div className={"listing-resource-copy-item listing-resource-price"}>{resource.price}</div>
                     <div className={"listing-resource-copy-item listing-resource-sale"}>{resource.salesText}</div>
                     <div className={"listing-resource-copy-item listing-resource-incentive"}>{resource.incentiveText}</div>

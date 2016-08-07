@@ -21,10 +21,8 @@
   }
 
   .slide-item-image {
-    background: {
-      size: cover;
-      position: 50% 50%;
-    }
+    @extend %background-cover-center;
+    @extend %paralax;
   }
 
   .slide-item-cover {

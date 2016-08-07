@@ -53,6 +53,46 @@ export default {
         error: '',
         data: {}
     },
+    restaurants: {
+        isFetching: false,
+        error: '',
+        data: []
+    },
+    currentRestaurantResource: {
+        isFetching: false,
+        error: '',
+        data: {}
+    },
+    coffeeShops: {
+        isFetching: false,
+        error: '',
+        data: []
+    },
+    currentCoffeeShopResource: {
+        isFetching: false,
+        error: '',
+        data: {}
+    },
+    funResources: {
+        isFetching: false,
+        error: '',
+        data: []
+    },
+    currentFunResource: {
+        isFetching: false,
+        error: '',
+        data: {}
+    },
+    currentShoppingResource: {
+        isFetching: false,
+        error: '',
+        data: {}
+    },
+    shoppingResources: {
+        isFetching: false,
+        error: '',
+        data: []
+    },
     chats: {
         isFetching: false,
         error: '',

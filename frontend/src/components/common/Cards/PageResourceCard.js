@@ -8,23 +8,25 @@ require('./PageResourceCard.scss');
 class PageResourceCard extends React.Component {
     render() {
         let {resource, callToAction} = this.props;
-        let {title, longDescription, img, className, likedUsers} =  this.props.resource;
+        let {title, longDescription, img, className, likedUsers, address, phone} =  this.props.resource;
 
         className = className || '';
         console.log('rendering PageResourceCard');
         return (
-            <Card className={`page-resource-card ${className}`}>
-                <CardMedia className={"page-resource-card-media"}>
-                    <img className={"page-resource-card-image"} src={img} />
+            <Card className={`page-resource ${className}`}>
+                <CardMedia className={"page-resource-media"}>
+                    <img className={"page-resource-image"} src={img} />
                 </CardMedia>
                 <CardTitle title={title}/>
-                <CardText className={"page-resource-card-description"}>
-                    <div dangerouslySetInnerHTML={{__html: longDescription}}/>
+                <CardText className={"page-resource-copy"}>
+                    <div className={"page-resource-address"}>{address}</div>
+                    <div className={"page-resource-phone"}>{phone}</div>
+                    <div className={"page-resource-description"} dangerouslySetInnerHTML={{__html: longDescription}} />
                 </CardText>
-                <CardText className={"page-resource-card-action"}>
+                <CardText className={"page-resource-action"}>
                     <SocialLikes users={likedUsers}/>
                     <CardActions>
-                        <FlatButton className={"page-resource-card-button"} label={callToAction} />
+                        <FlatButton className={"page-resource-button"} label={callToAction} />
                     </CardActions>
                 </CardText>
 

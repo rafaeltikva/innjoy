@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as searchActions from '../../../actions/searchActions'
 import ListingResourceCards from '../../common/Cards/ListingResourceCards'
+import Card from 'material-ui/Card'
 import Loading from '../../common/Loading'
 import SideBar from '../../common/SideBar/SideBar'
 import Content from '../../common/Content/Content'
@@ -78,14 +79,14 @@ class SearchResults extends React.Component {
         }
 
         return (
-            <div className={"search-results-container"}>
+            <Card className={"content-container search-results-container"}>
                 <div className={"search-result-result"}>{this.state.searchResults.textResponse}</div>
                 {this.state.searchResults.numOfResults > 0 ?
                     <ListingResourceCards className={"search-results"}
                                           resources={this.state.searchResults.data}
                                           currentPath={this.props.location.pathname}/>
                     : null}
-            </div>
+            </Card>
         );
 
     }

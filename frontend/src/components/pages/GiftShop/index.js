@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {Tab} from 'material-ui/Tabs'
+import Card from 'material-ui/Card'
 import TabBar from '../../common/TabBar'
 import Loading from '../../common/Loading'
 import NotFoundMessage from '../../common/NotFoundMessage'
@@ -71,9 +72,11 @@ class GiftShop extends React.Component {
                 {giftShopCategories.data.map(category => {
                     return (
                         <Tab key={category.id} className={"amenity-category"} label={category.title}>
-                            <ListingResourceCards className={"amenity-categories-container"}
-                                                  resources={category.data}
-                                                  currentPath={location.pathname}/>
+                            <Card className={"content-container"}>
+                                <ListingResourceCards className={"amenity-categories-container"}
+                                                      resources={category.data}
+                                                      currentPath={location.pathname}/>
+                            </Card>
                         </Tab>
                     );
                 })}

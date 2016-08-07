@@ -2,10 +2,13 @@
 
 @include keyframe_fadein;
 
-.greeting {
-  @include animation(fadein, $duration: 3s, $timing-function: ease-in-out);
-  color: #fff;
-  font-size: 4em;
-  margin: 25px;
-  display: inline-block;
+.greeting-container {
+  text-align: center;
+  .greeting {
+    @include animation(fadein, $duration: 3s, $timing-function: ease-in-out);
+    color: #fff;
+    font-size: 4em;
+    margin: 25px;
+    display: inline-block;
+  }
 }

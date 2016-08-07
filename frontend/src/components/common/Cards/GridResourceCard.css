@@ -8,7 +8,7 @@ Error: File to import not found or unreadable: placeholders.
 3: @import 'variables';
 4: 
 5: .grid-resource-card {
-6:   .amenity-categories-container & {
+6: 
 
 Backtrace:
 GridResourceCard.scss:1
@@ -53,4 +53,4 @@ GridResourceCard.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: placeholders.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of GridResourceCard.scss\A \A 1: @import 'placeholders';\A 2: @import 'mixins';\A 3: @import 'variables';\A 4: \A 5: .grid-resource-card {\A 6:   .amenity-categories-container & {"; }
+  content: "Error: File to import not found or unreadable: placeholders.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of GridResourceCard.scss\A \A 1: @import 'placeholders';\A 2: @import 'mixins';\A 3: @import 'variables';\A 4: \A 5: .grid-resource-card {\A 6: "; }

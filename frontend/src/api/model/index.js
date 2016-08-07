@@ -5,6 +5,10 @@ export hotelInfo from './hotelInfo'
 export notifications from './notifications'
 export pageInfo from './pageInfo'
 export userInfo from './userInfo'
+export restaurants from './restaurants'
+export coffeeShops from './coffeeShops'
+export fun from './fun'
+export shopping from './shopping'
 
 
 

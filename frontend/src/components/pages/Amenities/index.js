@@ -10,6 +10,7 @@ import GridResourceCards from '../../common/Cards/GridResourceCards'
 import * as amenitiesActions from '../../../actions/amenitiesActions'
 import {isResourceType, isRoot} from '../../../tools/helpers'
 
+require('./Amenities.scss');
 
 class Amenities extends React.Component {
 
@@ -33,7 +34,8 @@ class Amenities extends React.Component {
 
     render() {
         let {amenities, hotelInfo} = this.props;
-        let amenitiesContent = amenities.isFetching || this.state.isFirstRender ? <Loading /> : this.getAmenitiesContent();
+        let amenitiesContent = amenities.isFetching || this.state.isFirstRender ?
+            <Loading /> : this.getAmenitiesContent();
 
         console.log('rendering amenities page: ', amenities);
         return (
@@ -60,7 +62,11 @@ class Amenities extends React.Component {
             return isResourceType(params.amenity, amenities.data) && isRoot(params.amenity, amenities.data) ? amenityComponent : amenityCategoriesComponent;
         }
 
-        return <GridResourceCards resources={amenities.data} currentPath={location.pathname}/>
+        return (
+            <div className={"amenities-container"}>
+                <GridResourceCards resources={amenities.data} currentPath={location.pathname}/>
+            </div>
+        );
 
     }
 }

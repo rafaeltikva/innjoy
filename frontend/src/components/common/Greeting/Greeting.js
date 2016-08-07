@@ -5,7 +5,9 @@ require('./Greeting.scss');
 const Greeting = ({message}) => {
 
     return (
-        <span className="greeting">{message}</span>
+        <div className={"greeting-container"}>
+            <span className="greeting">{message}</span>
+        </div>
     );
 };
 

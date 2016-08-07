@@ -22,7 +22,7 @@ export class HotelApi {
                 let foundResources = mockDBQueries.getResourcesOfParent(parentId, model[this.table].data, resourceType);
                 if (includeData) {
                     foundResources = foundResources.map(resource => {
-                        resource.data = mockDBQueries.getResourcesOfParent(resource.id, model[this.table].data)
+                        resource.data = mockDBQueries.getResourcesOfParent(resource.id, model[this.table].data);
                         return resource;
                     });
                 }
@@ -92,7 +92,7 @@ export class HotelApi {
             let foundResources = [];
             try {
                 for (let table in model) {
-                    if (table === 'amenities' || table === 'giftShop') {
+                    if (table === 'amenities' || table === 'giftShop' || table === 'restaurants' ) {
                         foundResources.push(...mockDBQueries.getResourcesByTitle(searchQuery, model[table].data, 'resource'));
                     }
                 }

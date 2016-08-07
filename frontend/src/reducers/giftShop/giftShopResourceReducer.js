@@ -9,7 +9,9 @@ export default function giftShopResourceReducer(state = initialState.currentGift
         case types.GET_CURRENT_GIFT_SHOP_RESOURCE_SUCCESS:
             return action.resource;
         case types.GET_CURRENT_GIFT_SHOP_RESOURCE_FAILED:
-            return action.error;
+            return Object.assign({}, state, { error: action.error}) ;
+        case types.SET_CURRENT_GIFT_SHOP_RESOURCE_SUCCESS:
+            return action.resource;
         case types.INITIALIZE_GIFT_SHOP_RESOURCE:
             return Object.assign({}, state, { isInit: true} );
         default:
