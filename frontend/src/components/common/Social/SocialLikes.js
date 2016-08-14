@@ -16,7 +16,7 @@ class SocialLikes extends React.Component {
                         return (
                             <IconButton key={index} tooltip={user.fullName} tooltipPosition={"top-center"}
                                         style={{height: "30px", width: "30px", padding: 0}}>
-                                <UserAvatar size={30}/>
+                                <UserAvatar src={user.img} size={30}/>
                             </IconButton>
                         );
                     })}

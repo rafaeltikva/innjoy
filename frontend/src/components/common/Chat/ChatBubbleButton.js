@@ -11,7 +11,7 @@ class ChatBubbleButton extends React.Component {
             <IconButton tooltip={this.props.tooltip} tooltipPosition={"top-center"} className={"chat-bubble-button"} onTouchTap={this.props.onTouchTap}
                         style={{display: this.props.showButton ? "inherit" : "none", height: "60px", width: "60px", padding: 0}}>
                 <Badge badgeStyle={{opacity: this.props.numOfUnread > 0 ? 1 : 0 }} className={"chat-badge alert-badge"} badgeContent={this.props.numOfUnread}>
-                    <UserAvatar size={60}/>
+                    <UserAvatar src={this.props.img} size={60}/>
                 </Badge>
 
             </IconButton>

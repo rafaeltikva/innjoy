@@ -8,14 +8,13 @@ import Chats from './common/Chat/Chats'
 import Loading from './common/Loading'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import {lightBlack, blueA200, cyanA100} from 'material-ui/styles/colors'
+import {lightBlack, blueGrey900, blueGrey700} from 'material-ui/styles/colors'
 
 const muiTheme = getMuiTheme({
     palette: {
         textColor: lightBlack,
-        primary1Color: '#263238',
-        primary2Color: '#40525B',
-        primary2Color: '#182A33',
+        primary1Color: blueGrey900,
+        primary2Color: blueGrey700,
         accentColor: '#BAA58C'
     },
     appBar: {

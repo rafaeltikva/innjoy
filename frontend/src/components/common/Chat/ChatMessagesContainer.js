@@ -7,7 +7,7 @@ class ChatMessagesContainer extends React.Component {
     render() {
         return (
             <div className={"chat-messages-container"}>
-                {this.props.messages.map((messageItem, index) => <ChatMessageContainer fromSelf={this.props.recipient !== messageItem.author} key={messageItem.id}>{messageItem.message}</ChatMessageContainer>)}
+                {this.props.messages.map((messageItem, index) => <ChatMessageContainer img={messageItem.img} fromSelf={this.props.recipient.name !== messageItem.author} key={messageItem.id}>{messageItem.message}</ChatMessageContainer>)}
             </div>
         );
     }
@@ -15,7 +15,7 @@ class ChatMessagesContainer extends React.Component {
 
 ChatMessagesContainer.propTypes = {
     messages: PropTypes.array,
-    recipient: PropTypes.string
+    recipient: PropTypes.object
 };
 
 export default ChatMessagesContainer;

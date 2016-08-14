@@ -5,13 +5,24 @@ require('./UserAvatar.scss');
 
 class UserAvatar extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            src: this.props.src ? this.props.src : "/img/Avatar.png"
+        }
+
+    }
+
     render() {
-        let {size} = this.props;
         return (
-            <Avatar className={"user-avatar"} src={"/img/Avatar.png"} size={size}/>
+            <Avatar className={"user-avatar"} src={this.state.src} size={this.props.size}/>
         );
     }
 }
+
+UserAvatar.defaultProps = {
+    src: "/img/Avatar.png"
+};
 
 UserAvatar.propTypes = {
     //myProp: PropTypes.string.isRequired

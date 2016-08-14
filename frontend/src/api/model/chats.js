@@ -6,7 +6,7 @@ const chats = {
                 id: 7,
                 name: 'Jimmy',
                 role: 'Concierge',
-                avatar: ''
+                img: 'http://pngimg.com/upload/businessman_PNG6566.png'
             },
             options: {
                 showBubble: true,
@@ -18,7 +18,7 @@ const chats = {
                     id: 233,
                     author: "Jimmy",
                     date: '02/06/2016',
-                    avatar: '',
+                    img: 'http://pngimg.com/upload/businessman_PNG6566.png',
                     isRead: true,
                     message: "Hey! How you Doin?!"
                 },
@@ -26,7 +26,7 @@ const chats = {
                     id: 234,
                     author: "Rafael",
                     date: '02/06/2016',
-                    avatar: '',
+                    img: 'https://scontent.xx.fbcdn.net/v/t1.0-9/391965_10150483815083760_1837991466_n.jpg?oh=a2af27350c9dc4779d9df1127d89ee86&oe=585D1305',
                     isRead: true,
                     message: "I'm fine and you?!"
                 },
@@ -34,7 +34,7 @@ const chats = {
                     id: 235,
                     author: "Jimmy",
                     date: '02/06/2016',
-                    avatar: '',
+                    img: 'http://pngimg.com/upload/businessman_PNG6566.png',
                     isRead: false,
                     message: "I'm excellent!"
                 }
@@ -46,7 +46,7 @@ const chats = {
                 id: 9,
                 name: 'Jane',
                 role: 'Spa',
-                avatar: ''
+                img: ''
             },
             options: {
                 showBubble: true,
@@ -58,7 +58,7 @@ const chats = {
                     id: 433,
                     author: "Jane",
                     date: '03/04/2016',
-                    avatar: '',
+                    img: '',
                     isRead: true,
                     message: "Hey Rafael, ready for your Swedish massage?"
                 },
@@ -66,7 +66,7 @@ const chats = {
                     id: 434,
                     author: "Rafael",
                     date: '03/04/2016',
-                    avatar: '',
+                    img: '',
                     isRead: true,
                     message: "Hell yea!"
                 },
@@ -74,7 +74,7 @@ const chats = {
                     id: 435,
                     author: "Jane",
                     date: '04/04/2016',
-                    avatar: '',
+                    img: '',
                     isRead: false,
                     message: "Well come on then!"
                 }
@@ -87,7 +87,7 @@ const chats = {
                 id: 8,
                 name: 'Billy',
                 role: 'Front Desk',
-                avatar: ''
+                img: 'http://pngimg.com/upload/businessman_PNG6566.png'
             },
             options: {
                 showBubble: true,
@@ -99,7 +99,7 @@ const chats = {
                     id: 333,
                     author: "Billy",
                     date: '02/06/2016',
-                    avatar: '',
+                    img: 'http://pngimg.com/upload/businessman_PNG6566.png',
                     isRead: true,
                     message: "Hey Rafael, you're taxi is here."
                 },
@@ -107,7 +107,7 @@ const chats = {
                     id: 334,
                     author: "Rafael",
                     date: '02/06/2016',
-                    avatar: '',
+                    img: 'https://scontent.xx.fbcdn.net/v/t1.0-9/391965_10150483815083760_1837991466_n.jpg?oh=a2af27350c9dc4779d9df1127d89ee86&oe=585D1305',
                     isRead: true,
                     message: "Great, I'll be down in 5 minutes."
                 },
@@ -115,7 +115,7 @@ const chats = {
                     id: 335,
                     author: "Billy",
                     date: '03/06/2016',
-                    avatar: '',
+                    img: 'http://pngimg.com/upload/businessman_PNG6566.png',
                     isRead: false,
                     message: "No problem. The driver is having a cup of coffee. "
                 },
@@ -123,7 +123,7 @@ const chats = {
                     id: 336,
                     author: "Billy",
                     date: '03/06/2016',
-                    avatar: '',
+                    img: 'http://pngimg.com/upload/businessman_PNG6566.png',
                     isRead: false,
                     message: "Take your time :)"
                 }
@@ -135,7 +135,7 @@ const chats = {
                 id: 10,
                 name: 'Ramon',
                 role: 'Bellboy',
-                avatar: ''
+                img: 'http://pngimg.com/upload/businessman_PNG6566.png'
             },
             options: {
                 showBubble: false,
@@ -147,7 +147,7 @@ const chats = {
                     id: 333,
                     author: "Rafael",
                     date: '22/07/2016',
-                    avatar: '',
+                    img: 'https://scontent.xx.fbcdn.net/v/t1.0-9/391965_10150483815083760_1837991466_n.jpg?oh=a2af27350c9dc4779d9df1127d89ee86&oe=585D1305',
                     isRead: true,
                     message: "Hey Ramon, can you take my bags to the underground parking?"
                 },
@@ -155,7 +155,7 @@ const chats = {
                     id: 334,
                     author: "Ramon",
                     date: '22/07/2016',
-                    avatar: '',
+                    img: 'http://pngimg.com/upload/businessman_PNG6566.png',
                     isRead: true,
                     message: "Of course sir"
                 },
@@ -163,7 +163,7 @@ const chats = {
                     id: 335,
                     author: "Rafael",
                     date: '22/07/2016',
-                    avatar: '',
+                    img: 'https://scontent.xx.fbcdn.net/v/t1.0-9/391965_10150483815083760_1837991466_n.jpg?oh=a2af27350c9dc4779d9df1127d89ee86&oe=585D1305',
                     isRead: true,
                     message: "Thanks"
                 }

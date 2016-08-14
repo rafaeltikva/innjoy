@@ -142,30 +142,31 @@ const amenities = {
             title: "Swedish Massage",
             img: "http://www.lastminute.com/c/content/dam/site_gb/Spa/370x205_treatments_massage_4.jpg",
             shortDescription: "Relaxing the whole body this is the perfect in ultimate indulgence.",
-            longDescription: "This is a long excerpt of swedish massage",
+            longDescription: "<p>Swedish massage is the most common and best-known type of massage we offer. Discover true meaning of relaxation and let your body feel wonderful & rejuvenated. </p>" +
+            "<p>Swedish massages are shown to reduce pain, improve circulation, ease joint stiffness, and increase range of motion. </p><p>Book your appointment now & add a dose of relaxation to your wonderful vacation.</p>",
             type: "resource",
             isRoot: false,
             parentId: 911,
             likedUsers: [
                 {
                     fullName: "Cristiano Ronaldo",
-                    img: ''
+                    img: 'http://img.uefa.com/imgml/TP/players/9/2014/324x324/63706.jpg'
                 },
                 {
                     fullName: "Lionel Messi",
-                    img: ''
+                    img: 'http://img.uefa.com/imgml/TP/players/9/2015/324x324/95803.jpg'
                 },
                 {
                     fullName: "Eyal Meshumar",
-                    img: ''
+                    img: 'http://mad.walla.co.il/archive/475972-20.gif'
                 },
                 {
                     fullName: "Yoav Ziv",
-                    img: ''
+                    img: 'http://img.uefa.com/imgml/TP/players/1/2016/324x324/55778.jpg'
                 },
                 {
                     fullName: "Nosa Igiebor",
-                    img: ''
+                    img: 'http://img.uefa.com/imgml/TP/players/1/2016/324x324/250036953.jpg'
                 }
             ]
         },

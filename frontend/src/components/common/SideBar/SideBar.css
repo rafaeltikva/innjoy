@@ -7,8 +7,8 @@ Error: File to import not found or unreadable: variables.
 2: 
 3: .sidebar {
 4:   $width: 20%;
-5:   $background-opacity: 0.75;
-6:   $background-color: rgba($primary3-color, $background-opacity);
+5:   $background-opacity: 0.9;
+6:   $background-color: rgba($primary1-color, $background-opacity);
 
 Backtrace:
 SideBar.scss:1
@@ -53,4 +53,4 @@ SideBar.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: variables.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of SideBar.scss\A \A 1: @import \"variables\";\A 2: \A 3: .sidebar {\A 4:   $width: 20%;\A 5:   $background-opacity: 0.75;\A 6:   $background-color: rgba($primary3-color, $background-opacity);"; }
+  content: "Error: File to import not found or unreadable: variables.\A        Load path: /Users/rafaeltikva/PycharmProjects/InnJoy/frontent/src/static/styles\A         on line 1 of SideBar.scss\A \A 1: @import \"variables\";\A 2: \A 3: .sidebar {\A 4:   $width: 20%;\A 5:   $background-opacity: 0.9;\A 6:   $background-color: rgba($primary1-color, $background-opacity);"; }
