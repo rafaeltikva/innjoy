@@ -1,6 +1,9 @@
 import * as model from './model'
 import * as mockDBQueries from './mockDBQueries'
 
+/*** mock API config ***/
+var mockDelay = 1000;
+
 export class HotelApi {
 
     constructor(table) {
@@ -11,7 +14,7 @@ export class HotelApi {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(model[this.table]);
-            }, 1000);
+            }, mockDelay);
 
         });
     }
@@ -28,7 +31,7 @@ export class HotelApi {
                 }
                 console.log('the found resources from mock DB: ', foundResources);
                 foundResources.length ? resolve({data: foundResources}) : reject('No amenities found');
-            }, 1000);
+            }, mockDelay);
 
         });
     }
@@ -44,7 +47,7 @@ export class HotelApi {
                     });
                 }
                 foundResources ? resolve({data: foundResources}) : reject('No amenities found');
-            }, 1000);
+            }, mockDelay);
 
         });
     }
@@ -57,7 +60,7 @@ export class HotelApi {
             }
             setTimeout(() => {
                 return resource ? resolve(resource) : reject(` ${resourceSlug} doesn't exist`);
-            }, 1000);
+            }, mockDelay);
 
         });
     }
@@ -67,7 +70,7 @@ export class HotelApi {
             let foundResource = mockDBQueries.getResourceById(resourceId, model[this.table].data);
             setTimeout(() => {
                 return foundResource ? resolve(foundResource) : reject('No resource found in server');
-            }, 1000);
+            }, mockDelay);
         });
     }
 
@@ -82,7 +85,7 @@ export class HotelApi {
             }
             setTimeout(() => {
                 return foundResources.length ? resolve({data: foundResources}) : reject(`No resources of type ${resourceType}`);
-            }, 1000);
+            }, mockDelay);
 
         });
     }
@@ -109,7 +112,7 @@ export class HotelApi {
                     numOfResults: foundResources.length,
                     textResponse: `${foundResources.length} results found.`
                 });
-            }, 1000);
+            }, mockDelay);
         });
     }
 
