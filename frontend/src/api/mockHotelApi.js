@@ -11,7 +11,7 @@ export class HotelApi {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(model[this.table]);
-            }, 2000);
+            }, 1000);
 
         });
     }
@@ -28,7 +28,7 @@ export class HotelApi {
                 }
                 console.log('the found resources from mock DB: ', foundResources);
                 foundResources.length ? resolve({data: foundResources}) : reject('No amenities found');
-            }, 2000);
+            }, 1000);
 
         });
     }
@@ -44,7 +44,7 @@ export class HotelApi {
                     });
                 }
                 foundResources ? resolve({data: foundResources}) : reject('No amenities found');
-            }, 2000);
+            }, 1000);
 
         });
     }
@@ -57,7 +57,7 @@ export class HotelApi {
             }
             setTimeout(() => {
                 return resource ? resolve(resource) : reject(` ${resourceSlug} doesn't exist`);
-            }, 2000);
+            }, 1000);
 
         });
     }
@@ -67,7 +67,7 @@ export class HotelApi {
             let foundResource = mockDBQueries.getResourceById(resourceId, model[this.table].data);
             setTimeout(() => {
                 return foundResource ? resolve(foundResource) : reject('No resource found in server');
-            }, 2000);
+            }, 1000);
         });
     }
 
@@ -82,7 +82,7 @@ export class HotelApi {
             }
             setTimeout(() => {
                 return foundResources.length ? resolve({data: foundResources}) : reject(`No resources of type ${resourceType}`);
-            }, 2000);
+            }, 1000);
 
         });
     }
@@ -109,7 +109,7 @@ export class HotelApi {
                     numOfResults: foundResources.length,
                     textResponse: `${foundResources.length} results found.`
                 });
-            }, 2000);
+            }, 1000);
         });
     }
 
