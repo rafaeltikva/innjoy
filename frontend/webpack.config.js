@@ -90,6 +90,7 @@ module.exports = {
         contentBase: './src/templates',
         port: 7001,
         inline: true,
+        host: '0.0.0.0',
         // hot: true, // not needed when using HotModuleReplacementPlugin.
         historyApiFallback: true
     }
